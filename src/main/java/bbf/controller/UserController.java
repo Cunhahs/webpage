@@ -21,7 +21,6 @@ public class UserController {
 
     @PostMapping
     public String result(@ModelAttribute User user) {
-
         return "result";
     }
 }

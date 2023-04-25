@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página do Administrador - Lista de Produtos</title>
+    <link rel="stylesheet" type="text/css" href="stylePaginaOrganizacao.css">
+    <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <span>Listar Produtos</span>
+            <button onClick="openModal()" id="new">+</button>
+        </div>
+
+        <div class="divTable">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Código:</th>
+                        <th>Nome:</th>
+                        <th>Quantidade:</th>
+                        <th>Valor:</th>
+                        <th>Status:</th>
+                        <th>Visualizar</th>
+                        <th class="acao">Alterar</th>
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="modal-container">
+            <div class="modal">
+                <form>
+                    <label for="m-codigo">Código</label>
+                    <input id="m-codigo" type="text" required />
+
+                    <label for="m-nome">Nome</label>
+                    <input id="m-nome" type="text" required />
+
+                    <label for="m-descricao">Descrição</label>
+                    <input id="m-descricao" type="text" required />
+
+                    <label for="m-avaliacao">Avaliação</label>
+                    <input id="m-avaliacao" type="text" required />
+
+                    <label for="m-preco">Preço</label>
+                    <input id="m-preco" type="text" required />
+
+                    <label for="m-quantidade">Quantidade</label>
+                    <input id="m-quantidade" type="text" required />
+
+                    <label for="m-status">Status</label>
+                    <input id="m-status" type="text" required />
+
+                    <label for="m-link">Link</label>
+                    <input id="m-link" type="text" />
+
+                    <label for="m-imagens">Imagens</label>
+                    <input id="m-imagens" type="text" required />
+
+                    <button id="btnSalvar">Salvar</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <script src="scriptPaginaDeProdutos.js"></script>
+</body>
+</html>

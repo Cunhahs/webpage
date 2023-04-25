@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Landing Page</title>
+    <link rel="stylesheet" href="styleLandingPage.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
+</head>
+
+<body>
+    <div class="container">
+        <nav>
+            <div class="logo">
+                <i class="fa-solid fa-store"></i>
+            </div>
+
+            <ul>
+                <li><a href="#">Novidades</a></li>
+                <li><a href="#">Tênis</a></li>
+                <li><a href="#">Masculino</a></li>
+                <li><a href="#">Feminino</a></li>
+                <li><a href="#">Marcas</a></li>
+                <li><a href=""><img src="images/icon-cart.svg"></a></li>
+                <li><a href="">Login</a></li>
+            </ul>
+        </nav>
+
+        <div class="content">
+            <div class="div-text">
+                <span>PROMOÇÃO DO DIA</span>
+                <h3>TÊNIS NIKE AIR FORCE 1 07 SPACE JAM MASCULINO</h3>
+                <h1>PODE SER TODO SEU!</h1>
+                <p>Clássico e atemporal, o tênis Nike Air Force 1´07 é um modelo que nunca sai de moda!</p>
+                <!--<a href="#" class="btn">buy now</a>-->
+            </div>
+
+            <div class="div-img">
+                <img id="big-img" src="images/Tenis-Nike-Air-Force-1-07-x-Space-Jam-Masculino-Branco.jpg" alt="">
+            </div>
+
+            <div class="small-img">
+                <img onclick="myTshirt(this.src)" src="images/air force 1 colorido.jpg" alt="">
+                <img onclick="myTshirt(this.src)" src="images/air force 1 fontanka.jpg" alt="">
+                <img onclick="myTshirt(this.src)" src="images/air force 1 shroud.jpg" alt="">
+            </div>
+        </div>
+
+        <section>
+            <h1>ESTOQUE NOVOS</h1>
+            <div class="Container-roupas">
+                <div class="roupa">
+                    <img src="images/air force 1 colorido.jpg" alt="">
+                    <p>TÊNIS NIKE AIR FORCE 1 SHADOW FEMININO</p>
+                    <h5>R$ 1.099,99</h5>
+                    <ion-icon name="cart-outline"></ion-icon>
+                    <a href=""><btn>Detalhe</btn></a>
+                </div>
+
+
+                <div class="roupa">
+                    <img src="images/air force 1 fontanka.jpg" alt="">
+                    <p>TÊNIS NIKE AIR FORCE 1 FONTANKA FEMININO</p>
+                    <h5>R$ 1.199,99</h5>
+                    <span><ion-icon name="cart-outline"></ion-icon></span>
+                    <a href=""><btn>Detalhe</btn></a>
+                </div>
+
+                <div class="roupa">
+                    <img src="images/air force 1 shroud.jpg" alt="">
+                    <p>TÊNIS NIKE AIR FORCE 1 '07 SHROUD</p>
+                    <h5>R$ 699,99</h5>
+                    <ion-icon name="cart-outline"></ion-icon>
+                    <a href=""><btn>Detalhe</btn></a>
+                </div>
+
+                <div class="roupa">
+                    <img src="images/Tenis-Nike-Air-Force-1-07-x-Space-Jam-Masculino-Branco.jpg" alt="">
+                    <p>TÊNIS NIKE AIR FORCE 1 07 SPACE JAM MASCULINO</p>
+                    <h5>R$ 899,99</h5><ion-icon name="cart-outline"></ion-icon>
+                    <a href="paginaProduto.html"><btn>Detalhe</btn></a>
+                </div>
+            </div>
+        </section>
+    </div>
+    <script>
+        let bigImage = document.getElementById('');
+
+        function myTshirt(shirt) {
+            bigImage.src = shirt
+        }
+    </script>
+</body>
+
+</html>
