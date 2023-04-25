@@ -1,4 +1,4 @@
-package bbf.model;
+package br.com.senac.webpage.model;
 
 public class Usuario {
 

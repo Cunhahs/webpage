@@ -1,4 +1,4 @@
-package br.com.senac.sp.util;
+package br.com.senac.webpage.util;
 
 import java.io.UnsupportedEncodingException;
 import java.security.MessageDigest;

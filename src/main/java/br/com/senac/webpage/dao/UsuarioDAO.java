@@ -1,11 +1,11 @@
-package br.com.senac.sp.dao;
+package br.com.senac.webpage.dao;
 
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import bbf.model.Usuario;
+import br.com.senac.webpage.model.Usuario;
 
 public class UsuarioDAO {
 
