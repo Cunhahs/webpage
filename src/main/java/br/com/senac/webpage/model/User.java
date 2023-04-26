@@ -1,8 +1,5 @@
 package br.com.senac.webpage.model;
 
-import java.util.Date;
-
-
 public class User {
 
     private String name;
