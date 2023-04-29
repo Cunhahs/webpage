@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sneakers E-Commerce</title>
+    <link rel="stylesheet" type="text/css" href="stylePaginaCadastroCliente.css">
+</head>
+
+<body>
+    <div class="box">
+        <form action="">
+            <fieldset>
+                <legend><b>Cadastro</b></legend>
+                <h2>Dados</h2>
+                <div class="inputBox">
+                    <input type="text" name="nome" id="nome" class="inputUser" required>
+                    <label for="nome" class="labelInput">Nome completo</label>
+                </div>
+                <br><br>
+                <div class="inputBox">
+                    <input type="text" name="email" id="email" class="inputUser" required>
+                    <label for="email" class="labelInput">Email</label>
+                </div>
+                <br><br>
+                <div class="inputBox">
+                    <input type="password" name="senha" id="senha" class="inputUser" required>
+                    <label for="senha" class="labelInput">Senha</label>
+                </div>
+                <br><br>
+                <div class="inputBox">
+                    <input type="number" name="cpf" id="cpf" class="inputUser" required>
+                    <label for="cpf" class="labelInput">CPF</label>
+                </div>
+
+                <p>Sexo:</p>
+                <input type="radio" id="feminino" name="genero" value="feminino" required>
+                <label for="feminino">Feminino</label>
+                <br>
+                <input type="radio" id="masculino" name="genero" value="masculino" required>
+                <label for="masculino">Masculino</label>
+                <br>
+                <input type="radio" id="outro" name="genero" value="outro" required>
+                <label for="outro">Outro</label>
+                <br>
+
+                <label for="data_nascimento"><b>Data de Nascimento:</b></label>
+                <input type="date" name="data_nascimento" id="data_nascimento" required>
+
+                <h2>Endereço</h2>
+                <div class="inputBox">
+                    <input type="text" name="cidade" id="cidade" class="inputUser" required>
+                    <label for="cidade" class="labelInput">Cidade</label>
+                </div>
+                <br><br>
+                <div class="inputBox">
+                    <input type="text" name="estado" id="estado" class="inputUser" required>
+                    <label for="estado" class="labelInput">Estado</label>
+                </div>
+                <br><br>
+                <div class="inputBox">
+                    <input type="text" name="logradouro" id="logradouro" class="inputUser" required>
+                    <label for="logradouro" class="labelInput">Logradouro</label>
+                </div>
+                <br><br>
+                <div class="inputBox">
+                    <input type="number" name="numeroLogradouro" id="numeroLogradouro" class="inputUser" required>
+                    <label for="numeroLogradouro" class="labelInput">Número</label>
+                </div>
+                <br><br>
+                <div class="inputBox">
+                    <input type="text" name="complemento" id="complemento" class="inputUser">
+                    <label for="complemento" class="labelInput">Complemento</label>
+                </div>
+                <br><br>
+                <div class="inputBox">
+                    <input type="number" name="cep" id="cep" class="inputUser" required>
+                    <label for="cep" class="labelInput">CEP</label>
+                </div>
+                <br><br>
+                <div class="inputBox">
+                    <input type="text" name="bairro" id="bairro" class="inputUser" required>
+                    <label for="bairro" class="labelInput">Bairro</label>
+                </div>
+                <br>
+                <input type="submit" name="submit" id="submit">
+            </fieldset>
+        </form>
+    </div>
+</body>
+</html>

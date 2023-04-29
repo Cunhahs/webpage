@@ -13,6 +13,8 @@ const btnSalvar = document.querySelector('#btnSalvar');
 let itens; //variavel que armazena os itens
 let id; //armazena o index para edicao
 
+console.log("Olá !");
+
 const itemArray = [];
 
 function validarEmail(email) { //funcao para validar o cadastro (se nao houver cadastro com outro email)

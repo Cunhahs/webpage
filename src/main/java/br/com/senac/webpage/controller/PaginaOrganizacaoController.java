@@ -17,12 +17,12 @@ import br.com.senac.webpage.model.Usuario;
 import br.com.senac.webpage.util.Cripto;
 
 @Controller
-@RequestMapping("/login")
-public class LoginController {
+@RequestMapping("/pagina")
+public class PaginaOrganizacaoController {
 
     @GetMapping
     public String init(final Usuario usuario) {
-    	return "paginaUsuarioBackoffice";
+    	return "paginaOrganizacao";
         
     }
     

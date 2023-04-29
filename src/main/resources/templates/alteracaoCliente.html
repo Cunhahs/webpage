@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alteração Cliente</title>
+    <link href="stylePaginaAlteracao.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
+</head>
+
+<body>
+    <header>
+        <div class="menu">
+            <div class="left-side-menu">
+                <div class="logo">
+                    <i class="fa-solid fa-store"></i>
+                </div>
+                <nav>
+                    <ul>
+                        <li><a href="">Novidades</a></li>
+                        <li><a href="">Tênis</a></li>
+                        <li><a href="">Masculino</a></li>
+                        <li><a href="">Feminino</a></li>
+                        <li><a href="">Marcas</a></li>
+                    </ul>
+                </nav>
+            </div>
+            <div class="right-side-menu">
+                <a href=""><img src="images/icon-cart.svg"></a>
+                <a href="" class="icon-avatar"><img src="images/foto.jpg"></a>
+            </div>
+        </div>
+        <div class="line"></div>
+    </header>
+
+    <a href="landingPage.html" onclick="funcao1()">
+        <p>Sair da conta</p>
+    </a>
+
+    <div class="container">
+        <div class="form">
+            <form action="#">
+                <div class="input-group">
+                    <h1>Alteração dos dados do usuário.</h1>
+                    <div class="input-box">
+                        <label for="nomecompleto">Nome completo:</label>
+                        <input id="nomecompleto" type="text" name="nomecompleto" placeholder="Digite seu nome completo">
+                    </div>
+                    <div class="input-box">
+                        <label for="datanascimento">Data de Nascimento:</label>
+                        <input type="date" name="datanascimento" id="datanascimento">
+                    </div>
+
+                    <p>Sexo:</p>
+                    <div class="gender-group">
+                        <div class="gender-input">
+                            <input id="female" type="radio" name="gender">
+                            <label for="female">Feminino</label>
+                        </div>
+
+                        <div class="gender-input">
+                            <input id="male" type="radio" name="gender">
+                            <label for="male">Masculino</label>
+                        </div>
+
+                        <div class="gender-input">
+                            <input id="others" type="radio" name="gender">
+                            <label for="others">Outros</label>
+                        </div>
+
+                        <div class="gender-input">
+                            <input id="none" type="radio" name="gender">
+                            <label for="none">Prefiro não dizer</label>
+                        </div>
+                    </div>
+                </div>
+
+                <h2>Adicionar endereço</h2>
+                <div class="input-box">
+                    <label for="cidade" class="labelInput">Cidade:</label>
+                    <input id="cidade" type="text" name="cidade" placeholder="Digite sua cidade">
+                </div>
+                <div class="input-box">
+                    <label for="estado" class="labelInput">Estado:</label>
+                    <input id="estado" type="text" name="estado" placeholder="Digite seu estado">
+                </div>
+                <div class="input-box">
+                    <label for="logradouro" class="labelInput">Logradouro:</label>
+                    <input id="logradouro" type="text" name="logradouro" placeholder="Digite seu logradouro">
+                </div>
+                <div class="input-box">
+                    <label for="numeroLogradouro" class="labelInput">Número:</label>
+                    <input id="numeroLogradouro" type="number" name="numeroLogradouro" id="numeroLogradouro"
+                        placeholder="Digite o número">
+                </div>
+                <div class="input-box">
+                    <label for="complemento" class="labelInput">Complemento:</label>
+                    <input id="complemento" type="text" name="complemento" placeholder="Digite o complemento">
+                </div>
+                <div class="input-box">
+                    <label for="cep" class="labelInput">CEP:</label>
+                    <input id="cep" type="number" name="cep" placeholder="Digite o CEP">
+                </div>
+                <div class="input-box">
+                    <label for="bairro" class="labelInput">Bairro:</label>
+                    <input id="bairro" type="text" name="bairro" placeholder="Digite o seu bairro">
+                </div>
+                <input type="submit" name="submit" id="submit">
+            </form>
+        </div>
+    </div>
+    <div class="escolher-endereco">
+        <br>
+        <h2>Escolha o endereço padrão:</h2>
+        <input type="radio" id="endereco1" name="endereco" value="endereco1" required>
+        <label for="endereco1">Avenida Paulista, 300, Bela Vista, São Paulo, SP, CEP: 01311-100</label>
+        <br>
+        <input type="radio" id="endereco2" name="endereco" value="endereco2" required>
+        <label for="endereco2">Rua Sócrates, 225, Vila Sofia, São Paulo, SP, CEP: 04671070</label>
+        <br>
+        <input type="radio" id="endereco3" name="endereco" value="endereco3" required>
+        <label for="endereco3">Rua Jorge Dias, 103, Socorro, São Paulo, SP, CEP: 04766110</label>
+    </div>
+    <script>
+        function funcao1() {
+            alert("Tem certeza que deseja sair?");
+        }
+    </script>
+</body>
+
+</html>
