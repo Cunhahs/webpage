@@ -12,6 +12,7 @@ public class UsuarioDAO {
 	private static final String URL = "jdbc:mysql://localhost:3306/marketplace";
 	private static final String USER = "root";
 	private static final String PASSWORD = "";
+	
 
 	public void inserir(Usuario usuario) throws SQLException {
 		var con = DriverManager.getConnection(URL, USER, PASSWORD);
@@ -29,15 +30,18 @@ public class UsuarioDAO {
 	}
 
 	public boolean validar(String email, String senha) throws SQLException {
+		
 		var con = DriverManager.getConnection(URL, USER, PASSWORD);
-
+		System.out.println("entrei no banco");
 		PreparedStatement preparedStatement;
 		ResultSet resultSet;
+		System.out.println("entrei no banco");
 		String query = "select * from Usuario where email = ? and senha = ?";
-
+		System.out.println("entrei no banco");
 		preparedStatement = con.prepareStatement(query);
 		preparedStatement.setString(1, email);
 		preparedStatement.setString(2, senha);
+		System.out.println("entrei no banco");
 		resultSet = preparedStatement.executeQuery();
 		if (resultSet.next()) {
 			return true;

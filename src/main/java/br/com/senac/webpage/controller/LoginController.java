@@ -4,16 +4,15 @@ import java.io.UnsupportedEncodingException;
 import java.security.NoSuchAlgorithmException;
 import java.sql.SQLException;
 
-import org.json.JSONObject;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.google.gson.Gson;
-
 import br.com.senac.webpage.dao.UsuarioDAO;
-import br.com.senac.webpage.model.Usuario;
+import br.com.senac.webpage.model.UsuarioDto;
 import br.com.senac.webpage.util.Cripto;
 
 @Controller
@@ -21,26 +20,32 @@ import br.com.senac.webpage.util.Cripto;
 public class LoginController {
 
     @GetMapping
-    public String init(final Usuario usuario) {
+    public String init(final Model model) {  	
+    	model.addAttribute("usuarioDto", new UsuarioDto());
+    	System.out.println("init");
     	return "paginaUsuarioBackoffice";
-        
     }
     
-//    @PostMapping
-//    public void requestLogin(JSONObject json) throws SQLException, NoSuchAlgorithmException, UnsupportedEncodingException {
-//    	Gson gson = new Gson();
-//    	gson.toJson(json);
-//    	String senha = (String) json.get("senha");
-//    	String email = (String) json.get("email");
-//    	
-//    	System.out.println("bati");
-//    	UsuarioDAO usuarioDAO = new UsuarioDAO();
-//    	Cripto cripto = new Cripto();
-//    	String senhaFinal = cripto.crip(senha);
-//    	boolean altorizado = usuarioDAO.validar(email, senhaFinal);
-//    	if (altorizado == true)  System.out.println(senhaFinal);
-//    		
-//		
-//    }
-   
+    @PostMapping
+    public String result(@ModelAttribute UsuarioDto usuarioDto) throws NoSuchAlgorithmException, UnsupportedEncodingException {
+    	System.out.println(usuarioDto.getEmail());
+    	System.out.println(usuarioDto.getSenha());
+    	Cripto cripto = new Cripto();
+    	String senhaCriptografada = cripto.crip(usuarioDto.getSenha());
+    	System.out.println(senhaCriptografada);
+    	
+    	UsuarioDAO usuarioDAO = new UsuarioDAO();
+    	try {
+			boolean valido = usuarioDAO.validar(usuarioDto.getEmail(), senhaCriptografada);
+			if (valido == true) {
+
+		    	return "landingPageLogado";		
+			}
+		
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+    	return "paginaUsuarioBackoffice";
+    } 
 }
