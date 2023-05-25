@@ -5,17 +5,21 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.stereotype.Repository;
+
 import br.com.senac.webpage.model.Usuario;
 
+@Repository
 public class UsuarioDAO {
 
 	private static final String URL = "jdbc:mysql://localhost:3306/marketplace";
 	private static final String USER = "root";
 	private static final String PASSWORD = "";
-	
 
 	public void inserir(Usuario usuario) throws SQLException {
 		var con = DriverManager.getConnection(URL, USER, PASSWORD);
+		
 
 		var ps = con.prepareStatement("INSERT INTO Usuario (id, nome, cpf, email, senha, grupo) VALUES (?, ?, ?, ?, ?, ?)");
 		ps.setString(1, usuario.getId());
@@ -30,7 +34,7 @@ public class UsuarioDAO {
 	}
 
 	public boolean validar(String email, String senha) throws SQLException {
-		
+		System.out.println("cheguei");
 		var con = DriverManager.getConnection(URL, USER, PASSWORD);
 		System.out.println("entrei no banco");
 		PreparedStatement preparedStatement;
@@ -41,7 +45,6 @@ public class UsuarioDAO {
 		preparedStatement = con.prepareStatement(query);
 		preparedStatement.setString(1, email);
 		preparedStatement.setString(2, senha);
-		System.out.println("entrei no banco");
 		resultSet = preparedStatement.executeQuery();
 		if (resultSet.next()) {
 			return true;

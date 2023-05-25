@@ -39,7 +39,7 @@ public class LoginController {
 			boolean valido = usuarioDAO.validar(usuarioDto.getEmail(), senhaCriptografada);
 			if (valido == true) {
 
-		    	return "landingPageLogado";		
+		    	return "paginaEscolherLista";		
 			}
 		
 		} catch (SQLException e) {

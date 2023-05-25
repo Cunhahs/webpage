@@ -2,7 +2,6 @@ package br.com.senac.webpage.model;
 
 import jakarta.persistence.Entity;
 
-@Entity
 public class Usuario {
 
 	private String id;
