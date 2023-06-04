@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -9,13 +9,18 @@
 </head>
 <body>
     <div>
+		<form th:action="@{/loginCliente}" th:object="${usuarioDto}" method="post">
         <h1>Login</h1>
-        <input id="emailLogar" type="email" placeholder="Email">
+        <input id="emailLogar" type="email"  th:field="*{email}" placeholder="Email">
         <br></br>
-        <input id="senhaLogar" type="password" placeholder="Senha">
+        <input id="senhaLogar" type="password" th:field="*{senha}" placeholder="Senha">
         <br></br>
-        <a href="landingPageLogado.html"><button id="btnLogar">Logar</button></a>
-        <a href="paginaCadastroCliente.html"><h5>Cadastre-se</h5></a>
+        <a><button id="btnLogar" type="submit" name="logar" value="login">Logar</button></a></a></a>
+        <br></br> 
+		</form>
+		
+        <form th:action="@{/paginaCadastroCliente}" th:object="${usuarioDto}" method="get">
+        <a><button id="btnCadastrar" type="submit">Cadastrar</button></a></a>
     </div>
     <script src="scriptPaginaOrganizacao.js"></script>
 </body>

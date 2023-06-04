@@ -17,7 +17,7 @@ import br.com.senac.webpage.model.Usuario;
 import br.com.senac.webpage.util.Cripto;
 
 @Controller
-@RequestMapping("/pagina")
+@RequestMapping("/paginaOrganizacao")
 public class PaginaOrganizacaoController {
 
     @GetMapping

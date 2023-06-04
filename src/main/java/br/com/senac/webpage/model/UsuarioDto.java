@@ -6,6 +6,8 @@ public class UsuarioDto {
 	private String id;
 	private String email;
 	private String senha;
+	private String grupo;
+	private String request;
 
 	public UsuarioDto(String id, String email, String senha) {
 		super();
@@ -40,6 +42,22 @@ public class UsuarioDto {
 
 	public void setSenha(String senha) {
 		this.senha = senha;
+	}
+
+	public String getRequest() {
+		return request;
+	}
+
+	public void setRequest(String request) {
+		this.request = request;
+	}
+
+	public String getGrupo() {
+		return grupo;
+	}
+
+	public void setGrupo(String grupo) {
+		this.grupo = grupo;
 	}
 
 	}

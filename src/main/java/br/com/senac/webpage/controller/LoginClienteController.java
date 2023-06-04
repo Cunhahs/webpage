@@ -17,22 +17,19 @@ import br.com.senac.webpage.model.UsuarioDto;
 import br.com.senac.webpage.util.Cripto;
 
 @Controller
-@RequestMapping("/login")
-public class LoginController {
+@RequestMapping("/loginCliente")
+public class LoginClienteController {
 
-    @GetMapping    
+    @GetMapping
     public String init(final Model model) {  	
     	model.addAttribute("usuarioDto", new UsuarioDto());
     	System.out.println("init");
-    	
-    	return "paginaUsuarioBackoffice";
+    	return "paginaLoginCliente";
     }
-
-    public ModelAndView redirect(final Model model) {  	
-
-    	ModelAndView modelAndView = new ModelAndView("redirect:paginaEscolherLista");
-    	System.out.println("init");
-    	return modelAndView;
+    
+    public String cadastrar(final Model model) {  	
+    	System.out.println("init 2");
+    	return "paginaCadastroCliente";
     }
     
     @PostMapping
@@ -42,22 +39,24 @@ public class LoginController {
     	Cripto cripto = new Cripto();
     	String senhaCriptografada = cripto.crip(usuarioDto.getSenha());
     	System.out.println(senhaCriptografada);
+    	
     	System.out.println(usuarioDto.getRequest());
     	
     	UsuarioDAO usuarioDAO = new UsuarioDAO();
     	try {
-			boolean valido = usuarioDAO.validarAdmin(usuarioDto.getEmail(), senhaCriptografada, "Administrador");
+			boolean valido = usuarioDAO.validarCliente(usuarioDto.getEmail(), senhaCriptografada, "cliente");
 			if (valido == true) {
-				ModelAndView modelAndView = new ModelAndView("redirect:paginaEscolherLista");
-		    	System.out.println("init");
+
+		    	ModelAndView modelAndView = new ModelAndView("redirect:landingPageLogado");
 		    	return modelAndView;		
 			}
 		
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}ModelAndView modelAndView = new ModelAndView("redirect:login");
-    	System.out.println("init");
-    	return modelAndView;	
+		}
+        	ModelAndView modelAndView = new ModelAndView("redirect:loginCliente");
+        	return modelAndView;	
+		
     } 
 }

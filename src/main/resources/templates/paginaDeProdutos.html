@@ -9,6 +9,7 @@
     <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
 </head>
 <body>
+	
     <div class="container">
         <div class="header">
             <span>Listar Produtos</span>
@@ -33,37 +34,39 @@
             </table>
         </div>
 
+                    
         <div class="modal-container">
             <div class="modal">
-                <form>
-                    <label for="m-codigo">Código</label>
-                    <input id="m-codigo" type="text" required />
+ <form th:action="@{/paginaDeProduto}" th:object="${produto}" method="post">
+
+					<label for="m-codigo">Código</label>
+                    <input id="m-codigo" type="text" h:field="*{codigo}" required />
 
                     <label for="m-nome">Nome</label>
-                    <input id="m-nome" type="text" required />
+                    <input id="m-nome" type="text" h:field="*{nome}" required />
 
                     <label for="m-descricao">Descrição</label>
-                    <input id="m-descricao" type="text" required />
+                    <input id="m-descricao" type="text" h:field="*{descricao}" required />
 
                     <label for="m-avaliacao">Avaliação</label>
-                    <input id="m-avaliacao" type="text" required />
+                    <input id="m-avaliacao" type="text" h:field="*{avaliacao}" required />
 
                     <label for="m-preco">Preço</label>
-                    <input id="m-preco" type="text" required />
+                    <input id="m-preco" type="text" h:field="*{preco}" required />
 
                     <label for="m-quantidade">Quantidade</label>
-                    <input id="m-quantidade" type="text" required />
+                    <input id="m-quantidade" type="text" h:field="*{quantidade}" required />
 
                     <label for="m-status">Status</label>
-                    <input id="m-status" type="text" required />
+                    <input id="m-status" type="text" h:field="*{status}" required />
 
                     <label for="m-link">Link</label>
-                    <input id="m-link" type="text" />
+                    <input id="m-link" type="text" h:field="*{link}" />
 
                     <label for="m-imagens">Imagens</label>
-                    <input id="m-imagens" type="text" required />
+                    <input id="m-imagens" type="text" h:field="*{imagens}" required />
 
-                    <button id="btnSalvar">Salvar</button>
+                  <button id="btnSalvar" type="submit" name="salvar" value="salvar">Salvar</button>
                 </form>
             </div>
         </div>

@@ -7,7 +7,11 @@
     <title>paginaEscolherLista</title>
 </head>
 <body>
-    <a href="paginaOrganizacao.html"><h3>Lista de Usuários</h3></a>
-    <a href="paginaDeProdutos.html"><h3>Lista de Produtos</h3></a>
+     <form th:action="@{/paginaOrganizacao}" th:object="${usuarioDto}" method="get">
+        <a><button id="btnCadastra" type="submit">Organização</button></a></a>
+     </form>
+         <form th:action="@{/paginaDeProdutos}" th:object="${usuarioDto}" method="get">
+        <a><button id="btnCadastrar" type="submit">Produtos</button></a></a>
+          </form>
 </body>
 </html>
