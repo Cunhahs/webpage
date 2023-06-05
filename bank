@@ -1,0 +1,65 @@
+use marketplace;
+
+show tables;
+
+select * from usuario;
+
+drop table usuario;
+
+INSERT INTO usuario (id, nome, email, senha, cpf, sexo, nascimento, cidade, estado, logradouro, numero, complemento, cep, bairro, grupo, status)
+VALUES ('8ad3bb6a-bfe9-495e-9532-e73fddb5357c', 'Henrique', 'henrique@henrique.com', '5EE4D542B88A2C6D3FC69A78777BD6D26255CDB55D3F3F7E8B73EB358C539518', '43927854832', 'm', '02/04/2002', 'São Paulo', 'São Paulo', '-', '1374', '-', '04658-241', 'Vila Constancia', 'Administrador', 'ativo');
+
+create table usuario (
+id char(255),
+nome char(255),
+email char(255),
+senha char(255),
+cpf char(11),
+sexo char(15),
+nascimento char(10),
+cidade char(255),
+estado char(90),
+logradouro char(50),
+numero char(12),
+complemento char(255),
+cep char(9),
+bairro char(50),
+grupo char(30),
+status char(20)
+);
+
+
+CREATE TABLE produto (
+    codigo varchar(11),
+    nome varchar(70),
+    descricao varchar(600),
+    quantidade varchar(99),
+    avaliacao varchar(2),
+    preco varchar(10),
+    situacao varchar(50),
+    link varchar(200));
+
+
+INSERT INTO produto (codigo, nome, descricao, quantidade, avaliacao, preco, situacao, link)
+VALUES ('1', 'TÊNIS NIKE AIR FORCE 1 SHADOW FEMININO', '***', '10', '4', 'R$ 1099,99', 'Em estoque', 'www.sla.com');
+
+INSERT INTO produto (codigo, nome, descricao, quantidade, avaliacao, preco, situacao, link)
+VALUES ('2', 'TÊNIS NIKE AIR FORCE 1 FONTANKA FEMININOO', '***', '10', '4', 'R$ 1199,99', 'Em estoque', 'www.sla1.com');
+
+INSERT INTO produto (codigo, nome, descricao, quantidade, avaliacao, preco, situacao, link)
+VALUES ('3', 'TÊNIS NIKE AIR FORCE 1 07 SHROUD', '***', '10', '4', 'R$ 699,99', 'Em estoque', 'www.sla3.com');
+
+INSERT INTO produto (codigo, nome, descricao, quantidade, avaliacao, preco, situacao, link)
+VALUES ('4', 'TÊNIS NIKE AIR FORCE 1 07 SPACE JAM MASCULINO', '***', '10', '4', 'R$ 899,999', 'Em estoque', 'www.sla4.com');
+
+update produto SET quantidade = 9 WHERE nome = 'TÊNIS NIKE AIR FORCE 1 SHADOW FEMININO';
+
+select * from produto;
+drop table produto;
+
+delete from produto where descricao = 'Air Jordan 1';
+select quantidade from Produto WHERE nome = 'TÊNIS NIKE AIR FORCE 1 SHADOW FEMININO';
+select quantidade from Produto WHERE nome = 'TÊNIS NIKE AIR FORCE 1 FONTANKA FEMININOO';
+select quantidade from Produto WHERE nome = 'TÊNIS NIKE AIR FORCE 1 07 SHROUD';
+select quantidade from Produto WHERE nome = 'TÊNIS NIKE AIR FORCE 1 07 SPACE JAM MASCULINO';
+
