@@ -19,13 +19,13 @@ import br.com.senac.webpage.model.UsuarioDto;
 import br.com.senac.webpage.util.Cripto;
 
 @Controller
-@RequestMapping("/paginaDeProdutos")
-public class PaginaProdutoController {
+@RequestMapping("/paginaProdutos2")
+public class PaginaProduto2Controller {
 
     @GetMapping
     public String init(final Model model) {
     	model.addAttribute("produto", new Produto());
-    	return "paginaDeProdutos";
+    	return "paginaProduto2";
         
     }
     
