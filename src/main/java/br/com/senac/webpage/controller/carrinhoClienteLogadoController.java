@@ -35,8 +35,19 @@ public class carrinhoClienteLogadoController {
 			
     	System.out.println(produtoDto.getTenis1());
     	ProdutoDAO produtoDao = new ProdutoDAO();
-    	produtoDao.atualizaQuantidade(produtoDto);
-
+    	if (produtoDto.getTenis1()>0) {
+    		produtoDao.atualizaQuantidadeTenisUm(produtoDto);
+		}
+    	if (produtoDto.getTenis2()>0) {
+    		produtoDao.atualizaQuantidadeTenisDois(produtoDto);
+		}
+    	if (produtoDto.getTenis3()>0) {
+    		produtoDao.atualizaQuantidadeTenisTres(produtoDto);
+		}
+    	if (produtoDto.getTenis4()>0) {
+    		produtoDao.atualizaQuantidadeTenisQuatro(produtoDto);
+		}
+    	
        	ModelAndView modelAndView = new ModelAndView("redirect:paginaCheckout");
         	return modelAndView;	
     }
