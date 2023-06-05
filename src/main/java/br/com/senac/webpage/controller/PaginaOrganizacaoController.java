@@ -1,46 +1,38 @@
 package br.com.senac.webpage.controller;
 
-import java.io.UnsupportedEncodingException;
-import java.security.NoSuchAlgorithmException;
 import java.sql.SQLException;
+import java.util.List;
 
-import org.json.JSONObject;
+import org.apache.catalina.Manager;
+import org.springframework.core.Ordered;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
-
-import com.google.gson.Gson;
+import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 
 import br.com.senac.webpage.dao.UsuarioDAO;
-import br.com.senac.webpage.model.Usuario;
-import br.com.senac.webpage.util.Cripto;
+import br.com.senac.webpage.model.UsuarioAllDto;
+import br.com.senac.webpage.model.UsuarioDto;
 
 @Controller
 @RequestMapping("/paginaOrganizacao")
 public class PaginaOrganizacaoController {
 
     @GetMapping
-    public String init(final Usuario usuario) {
-    	return "paginaOrganizacao";
-        
-    }
-    
-//    @PostMapping
-//    public void requestLogin(JSONObject json) throws SQLException, NoSuchAlgorithmException, UnsupportedEncodingException {
-//    	Gson gson = new Gson();
-//    	gson.toJson(json);
-//    	String senha = (String) json.get("senha");
-//    	String email = (String) json.get("email");
-//    	
-//    	System.out.println("bati");
-//    	UsuarioDAO usuarioDAO = new UsuarioDAO();
-//    	Cripto cripto = new Cripto();
-//    	String senhaFinal = cripto.crip(senha);
-//    	boolean altorizado = usuarioDAO.validar(email, senhaFinal);
-//    	if (altorizado == true)  System.out.println(senhaFinal);
-//    		
-//		
-//    }
+    public ModelAndView init(Model model) throws SQLException {
+    	ModelAndView mv = new ModelAndView();
    
+    	UsuarioDAO userRepository = new UsuarioDAO();
+        List<UsuarioAllDto> users = userRepository.findAll(); // Substitua por sua lógica de acesso ao banco de dados
+       System.out.println(users.get(0).getNome());
+        mv.addObject("users", users);
+ 
+        return mv;
+        
+    } 
+    
+    
 }

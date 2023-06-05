@@ -1,8 +1,6 @@
 package br.com.senac.webpage.model;
 
-import jakarta.persistence.Entity;
-
-public class Usuario {
+public class Usuario  {
 
 	private String id;
 	private String nome;
@@ -19,6 +17,7 @@ public class Usuario {
 	private String complemento;
 	private String cep;
 	private String bairro;
+	private String status;
 	
 	public Usuario(String id, String nome,String cpf, String email, String senha, String grupo) {
 		super();
@@ -174,6 +173,14 @@ public class Usuario {
 
 	public void setCpf(String cpf) {
 		this.cpf = cpf;
+	}
+
+	public String getStatus() {
+		return status;
+	}
+
+	public void setStatus(String status) {
+		this.status = status;
 	}
 
 }

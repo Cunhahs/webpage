@@ -4,11 +4,15 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 
-import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
 import br.com.senac.webpage.model.Usuario;
+import br.com.senac.webpage.model.UsuarioAllDto;
+import br.com.senac.webpage.model.UsuarioDto;
 
 @Repository
 public class UsuarioDAO {
@@ -149,5 +153,33 @@ public class UsuarioDAO {
 
 		con.close();
     }
+
+	public List<UsuarioAllDto> findAll() throws SQLException {
+		 var con = DriverManager.getConnection(URL, USER, PASSWORD);
+		 
+		 String sql = "select * from usuario;";
+		 Statement stm = con.createStatement();
+		ResultSet ps = stm.executeQuery(sql);
+		 List<UsuarioAllDto> listAll = new ArrayList<UsuarioAllDto>();
+		
+		while (ps.next()) {
+
+		UsuarioAllDto n = new UsuarioAllDto();
+					
+		n.setNome(ps.getString("nome"));
+		n.setEmail(ps.getString("email"));
+		n.setCpf(ps.getString("cpf"));
+		n.setStatus(ps.getString("status"));
+		n.setGrupo(ps.getString("grupo"));
+
+		listAll.add(n);
+		System.out.println("ADICIONOU 1");
+					
+		}
+		System.out.println("Adicionou Todos!");
+				
+		 
+		return listAll ;
+	}
 
 }

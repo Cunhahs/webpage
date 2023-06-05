@@ -6,8 +6,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Landing Page</title>
-    <link rel="stylesheet" href="styleLandingPageLogado.css">
+    <link rel="stylesheet" href="styleLandingPageLogadoResponsivo.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
+    <script async src="loja.js"></script>
 </head>
 
 <body>
@@ -18,12 +19,8 @@
             </div>
 
             <ul>
-                <li><a href="#">Novidades</a></li>
                 <li><a href="#">Tênis</a></li>
-                <li><a href="#">Masculino</a></li>
-                <li><a href="#">Feminino</a></li>
-                <li><a href="#">Marcas</a></li>
-                <li><a href=""><img src="images/icon-cart.svg"></a></li>
+                <li><a href="carrinhoClienteLogado.html"><img src="images/icon-cart.svg"></a></li>
                 <li><a href="alteracaoCliente.html" class="icon-avatar"><img src="images/foto.jpg"></a></li>
             </ul>
         </nav>
@@ -48,50 +45,94 @@
             </div>
         </div>
 
-        <section>
+        <section class="container normal-section">
             <h1>ESTOQUE NOVOS</h1>
             <div class="Container-roupas">
                 <div class="roupa">
-                    <img src="images/air force 1 colorido.jpg" alt="">
-                    <p>TÊNIS NIKE AIR FORCE 1 SHADOW FEMININO</p>
-                    <h5>R$ 1.099,99</h5>
-                    <ion-icon name="cart-outline"></ion-icon>
-                    <a href=""><btn>Detalhe</btn></a>
-                </div>
-
-
-                <div class="roupa">
-                    <img src="images/air force 1 fontanka.jpg" alt="">
-                    <p>TÊNIS NIKE AIR FORCE 1 FONTANKA FEMININO</p>
-                    <h5>R$ 1.199,99</h5>
-                    <span><ion-icon name="cart-outline"></ion-icon></span>
-                    <a href=""><btn>Detalhe</btn></a>
+                    <img src="images/air force 1 colorido.jpg" alt="" class="product-image">
+                    <p class="product-title">TÊNIS NIKE AIR FORCE 1 SHADOW FEMININO</p>
+                    <div class="product-price-container">
+                        <h5 class="product-price">R$ 1099,99</h5>
+                        <ion-icon name="cart-outline"></ion-icon>
+                        <a href="">
+                            <btn>Detalhe</btn>
+                        </a>
+                        <button type="button" class="button-hover-background">Adicionar ao carrinho</button>
+                    </div>
                 </div>
 
                 <div class="roupa">
-                    <img src="images/air force 1 shroud.jpg" alt="">
-                    <p>TÊNIS NIKE AIR FORCE 1 '07 SHROUD</p>
-                    <h5>R$ 699,99</h5>
-                    <ion-icon name="cart-outline"></ion-icon>
-                    <a href=""><btn>Detalhe</btn></a>
+                    <img src="images/air force 1 fontanka.jpg" alt="" class="product-image">
+                    <p class="product-title">TÊNIS NIKE AIR FORCE 1 FONTANKA FEMININO</p>
+                    <div class="product-price-container">
+                        <h5 class="product-price">R$ 1199,99</h5>
+                        <ion-icon name="cart-outline"></ion-icon>
+                        <a href="">
+                            <btn>Detalhe</btn>
+                        </a>
+                        <button type="button" class="button-hover-background">Adicionar ao carrinho</button>
+                    </div>
                 </div>
 
                 <div class="roupa">
-                    <img src="images/Tenis-Nike-Air-Force-1-07-x-Space-Jam-Masculino-Branco.jpg" alt="">
-                    <p>TÊNIS NIKE AIR FORCE 1 07 SPACE JAM MASCULINO</p>
-                    <h5>R$ 899,99</h5><ion-icon name="cart-outline"></ion-icon>
-                    <a href="paginaProduto"><btn>Detalhe</btn></a>
+                    <img src="images/air force 1 shroud.jpg" alt="" class="product-image">
+                    <p class="product-title">TÊNIS NIKE AIR FORCE 1 '07 SHROUD</p>
+                    <div class="product-price-container">
+                        <h5 class="product-price">R$ 699,99</h5>
+                        <ion-icon name="cart-outline"></ion-icon>
+                        <a href="">
+                            <btn>Detalhe</btn>
+                        </a>
+                        <button type="button" class="button-hover-background">Adicionar ao carrinho</button>
+                    </div>
+                </div>
+
+                <div class="roupa">
+                    <img src="images/Tenis-Nike-Air-Force-1-07-x-Space-Jam-Masculino-Branco.jpg" alt=""
+                        class="product-image">
+                    <p class="product-title">TÊNIS NIKE AIR FORCE 1 07 SPACE JAM MASCULINO</p>
+                    <div class="product-price-container">
+                        <h5 class="product-price">R$ 899,99</h5>
+                        <ion-icon name="cart-outline"></ion-icon>
+                        <a href="paginaProduto.html">
+                            <btn>Detalhe</btn>
+                        </a>
+                        <button type="button" class="button-hover-background">Adicionar ao carrinho</button>
+                    </div>
                 </div>
             </div>
         </section>
-    </div>
-    <script>
-        let bigImage = document.getElementById('');
+        <main class="main-section">
+            <section class="container normal-section">
+                <h2 class="section-title">Carrinho</h2>
 
-        function myTshirt(shirt) {
-            bigImage.src = shirt
-        }
-    </script>
+                <table class="cart-table">
+                    <thead>
+                        <tr>
+                            <th class="table-head-item first-col">Item</th>
+                            <th class="table-head-item second-col">Preço</th>
+                            <th class="table-head-item third-col">Quantidade</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                    </tbody>
+
+                    <tfoot>
+                        <tr>
+                            <td colspan="3" class="cart-total-container">
+                                <strong>Total</strong>
+                                <span>R$0,00</span>
+                            </td>
+                        </tr>
+                    </tfoot>
+                </table>
+
+                <a href="carrinhoClienteLogado"><button type="button" class="purchase-button">Finalizar
+                        Compra</button></a>
+            </section>
+        </main>
+    </div>
 </body>
 
 </html>

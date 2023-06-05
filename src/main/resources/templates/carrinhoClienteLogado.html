@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Carrinho</title>
+  <link rel="stylesheet" href="styleCarrinhoClienteNaoLogado.css">
+  <script async src="loja.js"></script>
+</head>
+
+<body>
+  <main class="main-section">
+    <section class="container normal-section">
+      <h2 class="section-title">Carrinho</h2>
+
+      <table class="cart-table">
+        <thead>
+          <tr>
+            <th class="table-head-item first-col">Item</th>
+            <th class="table-head-item second-col">Preço</th>
+            <th class="table-head-item third-col">Quantidade</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr class="cart-product">
+            <td class="product-identification">
+              <img src="images/air force 1 colorido.jpg" alt="TÊNIS NIKE AIR FORCE 1 SHADOW FEMININO"
+                class="cart-product-image">
+              <strong class="cart-product-title">TÊNIS NIKE AIR FORCE 1 SHADOW FEMININO</strong>
+            </td>
+            <td>
+              <span class="cart-product-price">R$ 1099,99</span>
+            </td>
+            <td>
+              <input type="number" value="1" min="0" class="product-qtd-input">
+              <button id="button-remover" type="button" class="remove-product-button">Remover</button>
+            </td>
+          </tr>
+          <tr class="cart-product">
+            <td class="product-identification">
+              <img src="images/air force 1 fontanka.jpg" alt="TÊNIS NIKE AIR FORCE 1 FONTANKA FEMININO"
+                class="cart-product-image">
+              <strong class="cart-product-title">TÊNIS NIKE AIR FORCE 1 FONTANKA FEMININO</strong>
+            </td>
+            <td>
+              <span class="cart-product-price">R$ 1199,99</span>
+            </td>
+            <td>
+              <input type="number" value="1" min="0" class="product-qtd-input">
+              <button id="button-remover" type="button" class="remove-product-button">Remover</button>
+            </td>
+          </tr>
+          <tr class="cart-product">
+            <td class="product-identification">
+              <img src="images/air force 1 shroud.jpg" alt="TÊNIS NIKE AIR FORCE 1 '07 SHROUD"
+                class="cart-product-image">
+              <strong class="cart-product-title">TÊNIS NIKE AIR FORCE 1 '07 SHROUD</strong>
+            </td>
+            <td>
+              <span class="cart-product-price">R$ 699,99</span>
+            </td>
+            <td>
+              <input type="number" value="1" min="0" class="product-qtd-input">
+              <button id="button-remover" type="button" class="remove-product-button">Remover</button>
+            </td>
+          </tr>
+          <tr class="cart-product">
+            <td class="product-identification">
+              <img src="images/Tenis-Nike-Air-Force-1-07-x-Space-Jam-Masculino-Branco.jpg"
+                alt="TÊNIS NIKE AIR FORCE 1 07 SPACE JAM MASCULINO" class="cart-product-image">
+              <strong class="cart-product-title">TÊNIS NIKE AIR FORCE 1 07 SPACE JAM MASCULINO</strong>
+            </td>
+            <td>
+              <span class="cart-product-price">R$ 899,99</span>
+            </td>
+            <td>
+              <input type="number" value="1" min="0" class="product-qtd-input">
+              <button id="button-remover" type="button" class="remove-product-button">Remover</button>
+            </td>
+          </tr>
+        </tbody>
+
+        <tfoot>
+          <tr>
+            <td colspan="3" class="cart-total-container">
+              <strong>Total</strong>
+              <span>R$0,00</span>
+            </td>
+          </tr>
+        </tfoot>
+      </table>
+      <div class="escolher-endereco">
+        <br>
+        <h3>Escolha o frete para o endereço Avenida Paulista, 300, Bela Vista, São Paulo, SP, CEP 01311-100:</h3>
+        <input type="radio" id="frete1" name="frete" value="frete1" required>
+        <label for="frete1">receba até 16 de maio - grátis</label>
+        <br>
+        <input type="radio" id="frete2" name="frete" value="frete2" required>
+        <label for="frete2">retire na loja a partir de 16 de Maio - grátis</label>
+        <br>
+        <input type="radio" id="frete3" name="frete" value="frete3" required>
+        <label for="frete3">Correios receba até dia 14 de Maio - R$14,99</label>
+      </div>
+      <a href="paginaCheckout"><button type="button" class="purchase-button">Finalizar Compra</button></a>
+    </section>
+  </main>
+</body>
+
+</html>

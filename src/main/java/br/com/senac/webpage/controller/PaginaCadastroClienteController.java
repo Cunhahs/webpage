@@ -36,6 +36,7 @@ public class PaginaCadastroClienteController {
     	String senhaCriptografada = cripto.crip(usuario.getSenha());
     	usuario.setSenha(senhaCriptografada);
     	usuario.setGrupo("Cliente");
+    	usuario.setStatus("ativo");
     	
     	UsuarioDAO usuarioDAO = new UsuarioDAO();
     	usuarioDAO.inserir(usuario);
