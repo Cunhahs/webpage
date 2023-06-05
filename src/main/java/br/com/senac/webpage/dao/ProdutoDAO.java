@@ -8,7 +8,7 @@ import java.sql.SQLException;
 import org.springframework.stereotype.Repository;
 
 import br.com.senac.webpage.model.Produto;
-import br.com.senac.webpage.model.Usuario;
+import br.com.senac.webpage.model.ProdutoDto;
 
 @Repository
 public class ProdutoDAO {
@@ -32,4 +32,77 @@ public class ProdutoDAO {
 
 		con.close();
 	}
+	
+//	
+	public void atualizaQuantidade(ProdutoDto produtoDto) throws SQLException {
+		var con = DriverManager.getConnection(URL, USER, PASSWORD);
+		
+		ProdutoDAO produtoDAO = new ProdutoDAO();
+		int i = produtoDAO.primeiroTenisValorAntigo();
+		i = i - produtoDto.getTenis1();
+		PreparedStatement preparedStatement;
+		ResultSet resultSet;
+		String query = "update produto SET quantidade = ? WHERE nome = 'TÊNIS NIKE AIR FORCE 1 SHADOW FEMININO'";
+
+		preparedStatement = con.prepareStatement(query);
+		preparedStatement.setString(1, Integer.toString(i));
+		resultSet = preparedStatement.executeQuery();
+		
+		
+		}
+	
+	public int primeiroTenisValorAntigo() throws SQLException {
+		var con = DriverManager.getConnection(URL, USER, PASSWORD);
+
+		PreparedStatement preparedStatement;
+		ResultSet resultSet;
+		String query = "select quantidade from Produto WHERE nome = 'TÊNIS NIKE AIR FORCE 1 SHADOW FEMININO'";
+
+		preparedStatement = con.prepareStatement(query);
+		resultSet = preparedStatement.executeQuery();
+		String i = resultSet.toString();
+		System.out.println(i + "retorno");
+	
+		return ;
+		
+		}
+//	public void terceiroTenisValorAntigo() throws SQLException {
+//		var con = DriverManager.getConnection(URL, USER, PASSWORD);
+//
+//		PreparedStatement preparedStatement;
+//		ResultSet resultSet;
+//		String query = "select * from Produto where email = ?";
+//
+//		preparedStatement = con.prepareStatement(query);
+//		preparedStatement.setString(1, email);
+//		resultSet = preparedStatement.executeQuery();
+//		
+//		
+//		}
+	public void segundoTenisValorAntigo(String email) throws SQLException {
+		var con = DriverManager.getConnection(URL, USER, PASSWORD);
+
+		PreparedStatement preparedStatement;
+		ResultSet resultSet;
+		String query = "select * from Usuario where email = ?";
+
+		preparedStatement = con.prepareStatement(query);
+		preparedStatement.setString(1, email);
+		resultSet = preparedStatement.executeQuery();
+		
+		
+		}
+	public void quartoTenisValorAntigo(String email) throws SQLException {
+		var con = DriverManager.getConnection(URL, USER, PASSWORD);
+
+		PreparedStatement preparedStatement;
+		ResultSet resultSet;
+		String query = "select * from Usuario where email = ?";
+
+		preparedStatement = con.prepareStatement(query);
+		preparedStatement.setString(1, email);
+		resultSet = preparedStatement.executeQuery();
+		
+		
+		}
 }

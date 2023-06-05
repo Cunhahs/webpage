@@ -25,6 +25,7 @@
         </thead>
 
         <tbody>
+			<form th:action="@{/carrinhoClienteLogado}" th:object="${produtoDto}" method="post">
           <tr class="cart-product">
             <td class="product-identification">
               <img src="images/air force 1 colorido.jpg" alt="TÊNIS NIKE AIR FORCE 1 SHADOW FEMININO"
@@ -35,7 +36,7 @@
               <span class="cart-product-price">R$ 1099,99</span>
             </td>
             <td>
-              <input type="number" value="1" min="0" class="product-qtd-input">
+              <input type="number" value="1" min="0" class="product-qtd-input" th:field="*{tenis1}">
               <button id="button-remover" type="button" class="remove-product-button">Remover</button>
             </td>
           </tr>
@@ -49,7 +50,7 @@
               <span class="cart-product-price">R$ 1199,99</span>
             </td>
             <td>
-              <input type="number" value="1" min="0" class="product-qtd-input">
+              <input type="number" value="1" min="0" class="product-qtd-input" th:field="*{tenis2}">
               <button id="button-remover" type="button" class="remove-product-button">Remover</button>
             </td>
           </tr>
@@ -63,9 +64,10 @@
               <span class="cart-product-price">R$ 699,99</span>
             </td>
             <td>
-              <input type="number" value="1" min="0" class="product-qtd-input">
-              <button id="button-remover" type="button" class="remove-product-button">Remover</button>
+              <input type="number" value="1" min="0" class="product-qtd-input" th:field="*{tenis3}">
+             <button id="button-remover" type="button" class="remove-product-button">Remover</button>
             </td>
+         
           </tr>
           <tr class="cart-product">
             <td class="product-identification">
@@ -77,7 +79,7 @@
               <span class="cart-product-price">R$ 899,99</span>
             </td>
             <td>
-              <input type="number" value="1" min="0" class="product-qtd-input">
+              <input type="number" value="1" min="0" class="product-qtd-input" th:field="*{tenis4}">
               <button id="button-remover" type="button" class="remove-product-button">Remover</button>
             </td>
           </tr>
@@ -104,7 +106,8 @@
         <input type="radio" id="frete3" name="frete" value="frete3" required>
         <label for="frete3">Correios receba até dia 14 de Maio - R$14,99</label>
       </div>
-      <a href="paginaCheckout"><button type="button" class="purchase-button">Finalizar Compra</button></a>
+      <a><button type="submit" class="purchase-button">Finalizar Compra</button></a>
+      </form>
     </section>
   </main>
 </body>
