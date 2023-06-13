@@ -64,7 +64,7 @@
                     <input id="m-link" type="text" h:field="*{link}" />
 
                     <label for="m-imagens">Imagens</label>
-                    <input id="m-imagens" type="text" h:field="*{imagens}" required />
+                    <input id="m-imagens" type="file" accept="image/*" h:field="*{imagens}" multiple required />
 
                   <button id="btnSalvar" type="submit" name="salvar" value="salvar">Salvar</button>
                 </form>

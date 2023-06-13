@@ -24,7 +24,7 @@
           </tr>
         </thead>
 
-        <tbody>
+        <!--<tbody> 
 			<form th:action="@{/carrinhoClienteLogado}" th:object="${produtoDto}" method="post">
           <tr class="cart-product">
             <td class="product-identification">
@@ -83,7 +83,25 @@
               <button id="button-remover" type="button" class="remove-product-button">Remover</button>
             </td>
           </tr>
+        </tbody> -->
+
+        <tbody> <!-- Deixei esse tbody para ter como base, se precisar tirar, pode tirar. Só comentei o tbody de cima. -->
+          <tr class="cart-product">
+            <td class="product-identification">
+              <img src="" alt="" 
+                class="cart-product-image"> <!-- Aqui no src, é aonde vai a imagem do produto -->
+              <strong class="cart-product-title"> <!-- Aqui é aonde vai o nome do tênis --> </strong>
+            </td>
+            <td>
+              <span class="cart-product-price"> <!-- Aqui é aonde vai o preço do tênis --> </span>
+            </td>
+            <td>
+              <input type="number" value="0" min="0" class="product-qtd-input">
+              <button id="button-remover" type="button" class="remove-product-button">Remover</button>
+            </td>
+          </tr>
         </tbody>
+
 
         <tfoot>
           <tr>
