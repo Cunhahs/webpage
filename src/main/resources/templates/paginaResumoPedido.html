@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Resumo pedido</title>
+  <link rel="stylesheet" href="styleLandingPageLogado.css">
+</head>
+
+<body>
+  <main class="main-section">
+    <section class="container normal-section">
+      <h2 class="section-title">Resumo do Pedido</h2>
+
+      <table class="cart-table">
+        <thead>
+          <tr>
+            <th class="table-head-item first-col">Item</th>
+            <th class="table-head-item second-col">Preço</th>
+            <th class="table-head-item third-col">Quantidade</th>
+          </tr>
+        </thead>
+
+        <tbody> <!-- Deixei esse tbody para ter como base, se precisar tirar, pode tirar -->
+          <tr class="cart-product">
+            <td class="product-identification">
+              <img src="" alt=""
+                class="cart-product-image"> <!-- Aqui nesse src é aonde iria a iamgem principal do produto -->
+              <strong class="cart-product-title"> <!-- Aqui é aonde iria o nome do tênis --> </strong>
+            </td>
+            <td>
+              <span class="cart-product-price"> <!-- Aqui é aonde iria o preço do tênis --> </span>
+            </td>
+            <td>
+              <h3> <!-- Aqui é aonde iria a quantidade do produto comprado --> </h3>
+            </td>
+          </tr>
+        </tbody>
+
+        <tfoot>
+          <tr>
+            <td colspan="3" class="cart-total-container">
+              <strong>Total:</strong>
+              <span> <!-- Aqui é aonde iria o total da compra --> </span>
+            </td>
+          </tr>
+        </tfoot>
+      </table>
+      <br><br>
+      <h3>Endereço de entrega: <!-- Aqui é aonde iria o endereço padrão ou escolhido pelo cliente --> </h3>
+      <br>
+      <h3>Forma de Pagamento: <!-- Aqui é aonde iria a forma de pagamento da compra --> </h3>
+    </section>
+  </main>
+</body>
+
+</html>

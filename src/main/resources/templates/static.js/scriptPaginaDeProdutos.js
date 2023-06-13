@@ -138,8 +138,8 @@ function alterar() {
 }
 
   
-const getItensBD = () => JSON.parse(localStorage.getItem('dbfuncc')) ?? [] //funcao que pega o item no banco local. o JSON.parse torna uma informacao em formato JSON em um objeto JavaScript
+/*const getItensBD = () => JSON.parse(localStorage.getItem('dbfuncc')) ?? [] //funcao que pega o item no banco local. o JSON.parse torna uma informacao em formato JSON em um objeto JavaScript
 const setItensBD = () => localStorage.setItem('dbfuncc', JSON.stringify(itens)) //seta os itens no banco local em JSON form
   
-loadItens()
+loadItens()*/
 
