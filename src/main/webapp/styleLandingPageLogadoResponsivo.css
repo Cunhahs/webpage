@@ -12,6 +12,11 @@ body {
     padding-top: 7rem;
   }
   
+  
+  #button-remover {
+    margin-left: 0px;
+  }
+  
   .main-section {
     padding: 40px 0 64px;
     max-width: 600px;
@@ -173,12 +178,9 @@ body {
     font-size: 26px;
   }
 
-  #button-remover {
-    margin-left: 0px;
-  }
 
   .purchase-button {
     font-size: 18px;
     padding: 12px 16px;
     margin: 20px auto 0;
-  }
+      }
