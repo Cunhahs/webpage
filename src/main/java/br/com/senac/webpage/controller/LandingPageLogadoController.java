@@ -23,11 +23,6 @@ import br.com.senac.webpage.util.Cripto;
 @RequestMapping("/landingPageLogado")
 public class LandingPageLogadoController {
 
-    /*@GetMapping
-    public String init(final Model model) {
-    	System.out.println("init");
-    	return "landingPageLogado";
-    }*/
 
     @GetMapping
     public ModelAndView init(Model model) throws SQLException {

@@ -15,6 +15,7 @@ import org.springframework.web.servlet.ModelAndView;
 import br.com.senac.webpage.dao.UsuarioDAO;
 import br.com.senac.webpage.model.UsuarioDto;
 import br.com.senac.webpage.util.Cripto;
+import br.com.senac.webpage.util.IdSession;
 
 @Controller
 @RequestMapping("/login")
@@ -23,7 +24,7 @@ public class LoginController {
     @GetMapping    
     public String init(final Model model) {  	
     	model.addAttribute("usuarioDto", new UsuarioDto());
-    	System.out.println("init");
+    	System.out.println("login");
     	
     	return "paginaUsuarioBackoffice";
     }
@@ -31,7 +32,6 @@ public class LoginController {
     public ModelAndView redirect(final Model model) {  	
 
     	ModelAndView modelAndView = new ModelAndView("redirect:paginaEscolherLista");
-    	System.out.println("init");
     	return modelAndView;
     }
     
@@ -49,7 +49,7 @@ public class LoginController {
 			boolean valido = usuarioDAO.validarAdmin(usuarioDto.getEmail(), senhaCriptografada, "Administrador");
 			if (valido == true) {
 				ModelAndView modelAndView = new ModelAndView("redirect:paginaEscolherLista");
-				EscolherListaController.id = usuarioDto.getId();
+				IdSession.idMain = usuarioDAO.getId(usuarioDto.getEmail(), senhaCriptografada);
 				
 		    	return modelAndView;		
 			}

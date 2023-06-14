@@ -34,6 +34,9 @@
     <a href="landingPage.html" onclick="funcao1()">
         <p>Sair da conta</p>
     </a>
+    <a href="paginaPedidos.html">
+        <p>Ver meus pedidos</p>
+    </a>
 
     <div class="container">
         <div class="form">
@@ -109,9 +112,15 @@
     </div>
     <div class="escolher-endereco">
         <br>
-        <h2>Escolha o endereço padrão:</h2> <!-- Aqui é aonde vai o/os pra ele escolher endereco do usuário -->
+        <h2>Escolha o endereço padrão:</h2>
         <input type="radio" id="endereco1" name="endereco" value="endereco1" required>
-        <label for="endereco1"> <!-- Endereço --> </label>
+        <label for="endereco1">Avenida Paulista, 300, Bela Vista, São Paulo, SP, CEP: 01311-100</label>
+        <br>
+        <input type="radio" id="endereco2" name="endereco" value="endereco2" required>
+        <label for="endereco2">Rua Sócrates, 225, Vila Sofia, São Paulo, SP, CEP: 04671070</label>
+        <br>
+        <input type="radio" id="endereco3" name="endereco" value="endereco3" required>
+        <label for="endereco3">Rua Jorge Dias, 103, Socorro, São Paulo, SP, CEP: 04766110</label>
     </div>
     <script>
         function funcao1() {

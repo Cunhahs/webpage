@@ -184,4 +184,23 @@ public class UsuarioDAO {
 		return listAll ;
 	}
 
+	public String getId(String email, String senhaCriptografada) throws SQLException {
+		var con = DriverManager.getConnection(URL, USER, PASSWORD);
+
+		PreparedStatement preparedStatement;
+		ResultSet resultSet;
+		String query = "select id from Usuario where email = ? and senha = ? ";
+
+		preparedStatement = con.prepareStatement(query);
+		preparedStatement.setString(1, email);
+		preparedStatement.setString(2, senhaCriptografada);
+		resultSet = preparedStatement.executeQuery();
+
+		if (resultSet.next()) {
+			return resultSet.getString(1);
+		} else {
+			return null;
+		}
+	}
+
 }
