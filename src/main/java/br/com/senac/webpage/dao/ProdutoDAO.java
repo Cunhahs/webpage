@@ -39,7 +39,7 @@ public class ProdutoDAO {
 	
 //		
 	public List<ProdutoAllDto> findAll() throws SQLException {
-		var con = DriverManager.getConnection(USER, URL, PASSWORD);
+		var con = DriverManager.getConnection(URL, USER, PASSWORD);
 
 		String sql = "select * from produto;";
 		Statement stm = con.createStatement();

@@ -27,7 +27,7 @@ public class PaginaOrganizacaoController {
    
     	UsuarioDAO userRepository = new UsuarioDAO();
         List<UsuarioAllDto> users = userRepository.findAll(); // Substitua por sua lógica de acesso ao banco de dados
-       System.out.println(users.get(0).getNome());
+        System.out.println(users.get(0).getNome());
         mv.addObject("users", users);
  
         return mv;
