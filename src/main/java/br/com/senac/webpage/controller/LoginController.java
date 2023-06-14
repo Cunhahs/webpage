@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
+import org.thymeleaf.expression.Ids;
 
 import br.com.senac.webpage.dao.UsuarioDAO;
 import br.com.senac.webpage.model.UsuarioDto;
@@ -50,7 +51,7 @@ public class LoginController {
 			if (valido == true) {
 				ModelAndView modelAndView = new ModelAndView("redirect:paginaEscolherLista");
 				IdSession.idMain = usuarioDAO.getId(usuarioDto.getEmail(), senhaCriptografada);
-				
+				IdSession.idType = "Administrador";
 		    	return modelAndView;		
 			}
 		

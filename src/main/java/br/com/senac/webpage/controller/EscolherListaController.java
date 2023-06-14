@@ -15,11 +15,11 @@ public class EscolherListaController {
 
     @GetMapping
     public ModelAndView init(final Model model) {  
-    	if(IdSession.idMain ==null) {
+    	if(IdSession.idMain ==null || !IdSession.idType.equals("Administrador")) {
     	ModelAndView modelAndView = new ModelAndView("redirect:login");
     	System.out.println("login");
     	return modelAndView;
-    	}else {
+    	}else{
     		ModelAndView modelAndView = new ModelAndView("paginaEscolherLista");
         	System.out.println("pagina");
         	return modelAndView;

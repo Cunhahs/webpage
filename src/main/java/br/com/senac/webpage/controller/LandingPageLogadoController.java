@@ -30,8 +30,6 @@ public class LandingPageLogadoController {
 
         ProdutoDAO produtoRepository = new ProdutoDAO();
         List<ProdutoAllDto> produtos = produtoRepository.findAll();
-        System.out.println(produtos.get(0).getNome());
-        System.out.println(produtos.get(0).getPreco());
         
         mv.addObject("produtos", produtos);
 

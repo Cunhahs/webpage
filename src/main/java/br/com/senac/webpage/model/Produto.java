@@ -11,6 +11,7 @@ public class Produto {
 	private String avaliacao;
 	private String preco;
 	private String situacao;
+	private String linkImg;
 	
 	public String getCodigo() {
 		return codigo;
@@ -59,6 +60,12 @@ public class Produto {
 	}
 	public void setLink(String link) {
 		this.link = link;
+	}
+	public String getLinkImg() {
+		return linkImg;
+	}
+	public void setLinkImg(String linkImg) {
+		this.linkImg = linkImg;
 	}
 	private String link;
 }

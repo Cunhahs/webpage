@@ -15,6 +15,7 @@ import org.springframework.web.servlet.ModelAndView;
 import br.com.senac.webpage.dao.UsuarioDAO;
 import br.com.senac.webpage.model.UsuarioDto;
 import br.com.senac.webpage.util.Cripto;
+import br.com.senac.webpage.util.IdSession;
 
 @Controller
 @RequestMapping("/loginCliente")
@@ -48,6 +49,11 @@ public class LoginClienteController {
 			if (valido == true) {
 				
 		    	ModelAndView modelAndView = new ModelAndView("redirect:landingPageLogado");
+		    	
+		    	IdSession.idMain = usuarioDAO.getId(usuarioDto.getEmail(), senhaCriptografada);
+		    	IdSession.idType = "cliente";
+		    	System.out.println("Alterando sessão");
+		    	System.out.println(IdSession.idMain);
 		    	
 		    	return modelAndView;		
 			}

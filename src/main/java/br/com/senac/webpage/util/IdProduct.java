@@ -2,8 +2,7 @@ package br.com.senac.webpage.util;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
-public class IdSession {
+public class IdProduct {
 	@Autowired
-	public static String idMain;
-	public static String idType;
+	public static String idProduct;
 }

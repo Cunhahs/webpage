@@ -51,6 +51,8 @@ public class ProdutoDAO {
 
 			n.setNome(ps.getString("nome"));
 			n.setPreco(ps.getString("preco"));
+			n.setLinkImg("images/"+ ps.getString("link"));
+			System.out.println(n.getLinkImg());
 
 			listAll.add(n);
 			System.out.println("Funcionou");
