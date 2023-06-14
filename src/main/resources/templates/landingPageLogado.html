@@ -28,20 +28,19 @@
         <div class="content">
             <div class="div-text">
                 <span>PROMOÇÃO DO DIA</span>
-                <h3> <!-- Aqui é aonde vai o tênis que está em destaque/promoção --> </h3>
+                <h3>TÊNIS NIKE AIR FORCE 1 07 SPACE JAM MASCULINO</h3>
                 <h1>PODE SER TODO SEU!</h1>
-                <p> <!-- Detalhe do produto em destaque/promoção --> </p>
-                <!--<a href="#" class="btn">buy now</a>-->
+                <p>Clássico e atemporal, o tênis Nike Air Force 1´07 é um modelo que nunca sai de moda!</p>
             </div>
 
             <div class="div-img">
-                <img id="big-img" src="" alt=""> <!-- Nesse src, é aonde iria a imagem do produto em destaque/promoção -->
+                <img id="big-img" src="images/Tenis-Nike-Air-Force-1-07-x-Space-Jam-Masculino-Branco.jpg" alt="">
             </div>
 
             <div class="small-img">
-                <img onclick="myTshirt(this.src)" src="" alt=""> <!-- Nesse src, é aonde iria a imagem de outros produtos -->
-                <img onclick="myTshirt(this.src)" src="" alt=""> <!-- Nesse src, é aonde iria a imagem de outros produtos -->
-                <img onclick="myTshirt(this.src)" src="" alt=""> <!-- Nesse src, é aonde iria a imagem de outros produtos -->
+                <img onclick="myTshirt(this.src)" src="images/air force 1 colorido.jpg" alt="">
+                <img onclick="myTshirt(this.src)" src="images/air force 1 fontanka.jpg" alt="">
+                <img onclick="myTshirt(this.src)" src="images/air force 1 shroud.jpg" alt="">
             </div>
         </div>
 
@@ -49,12 +48,12 @@
             <h1>ESTOQUE NOVOS</h1>
             <div class="Container-roupas">
                 <div class="roupa">
-                    <img src="" alt="" class="product-image"> <!-- Nesse src, é aonde iria a imagem principal do produto -->
-                    <p class="product-title"> <!-- Aqui é aonde vai no nome do tênis --> </p>
+                    <img src="" alt="" class="product-image" th:src="${produto.image}"> 
+                    <p class="product-title" th:text="${produto.nome}"></p>
                     <div class="product-price-container">
-                        <h5 class="product-price"> <!-- Aqui é aonde vai o preço do tênis --> </h5>
+                        <h5 class="product-price" th:src="{produto.preco}"></h5>
                         <ion-icon name="cart-outline"></ion-icon>
-                        <a href=""> <!-- Aqui é aonde vai a pagina de detalhe do produto -->
+                        <a href="#" th:href="@{/detalhe/${produto.id}}">
                             <btn>Detalhe</btn>
                         </a>
                         <button type="button" class="button-hover-background">Adicionar ao carrinho</button>
@@ -62,6 +61,7 @@
                 </div>
             </div>
         </section>
+
         <!--
         <main class="main-section">
             <section class="container normal-section">
