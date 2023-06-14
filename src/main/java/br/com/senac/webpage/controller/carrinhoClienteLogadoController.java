@@ -33,7 +33,7 @@ public class carrinhoClienteLogadoController {
     @PostMapping
     public ModelAndView result(ProdutoDto produtoDto) throws NoSuchAlgorithmException, UnsupportedEncodingException, SQLException {
 			
-    	System.out.println(produtoDto.getTenis1());
+    	/*System.out.println(produtoDto.getTenis1());
     	ProdutoDAO produtoDao = new ProdutoDAO();
     	if (produtoDto.getTenis1()>0) {
     		produtoDao.atualizaQuantidadeTenisUm(produtoDto);
@@ -46,7 +46,7 @@ public class carrinhoClienteLogadoController {
 		}
     	if (produtoDto.getTenis4()>0) {
     		produtoDao.atualizaQuantidadeTenisQuatro(produtoDto);
-		}
+		}*/
     	
        	ModelAndView modelAndView = new ModelAndView("redirect:paginaCheckout");
         	return modelAndView;	

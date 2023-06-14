@@ -4,10 +4,14 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.springframework.stereotype.Repository;
 
 import br.com.senac.webpage.model.Produto;
+import br.com.senac.webpage.model.ProdutoAllDto;
 import br.com.senac.webpage.model.ProdutoDto;
 
 @Repository
@@ -33,140 +37,27 @@ public class ProdutoDAO {
 		con.close();
 	}
 	
-//	
-	public void atualizaQuantidadeTenisUm(ProdutoDto produtoDto) throws SQLException {
-		var con = DriverManager.getConnection(URL, USER, PASSWORD);
-		
-		ProdutoDAO produtoDAO = new ProdutoDAO();
-		int i = produtoDAO.primeiroTenisValorAntigo();
-		i = i - produtoDto.getTenis1();
-		PreparedStatement preparedStatement;
-		int resultSet;
-		String query = "update produto SET quantidade = ? WHERE nome = 'TÊNIS NIKE AIR FORCE 1 SHADOW FEMININO'";
+//		
+	public List<ProdutoAllDto> findAll() throws SQLException {
+		var con = DriverManager.getConnection(USER, URL, PASSWORD);
 
-		preparedStatement = con.prepareStatement(query);
-		preparedStatement.setString(1, Integer.toString(i));
-		resultSet = preparedStatement.executeUpdate();
-		
+		String sql = "select * from produto;";
+		Statement stm = con.createStatement();
+		ResultSet ps = stm.executeQuery(sql);
+		List<ProdutoAllDto> listAll = new ArrayList<ProdutoAllDto>();
+
+		while (ps.next()) {
+			ProdutoAllDto n = new ProdutoAllDto();
+
+			n.setNome(ps.getString("nome"));
+			n.setPreco(ps.getString("preco"));
+
+			listAll.add(n);
+			System.out.println("Funcionou");
 		}
-	public void atualizaQuantidadeTenisDois(ProdutoDto produtoDto) throws SQLException {
-		var con = DriverManager.getConnection(URL, USER, PASSWORD);
-		
-		ProdutoDAO produtoDAO = new ProdutoDAO();
-		int i = produtoDAO.segundoTenisValorAntigo();
-		i = i - produtoDto.getTenis1();
-		PreparedStatement preparedStatement;
-		int resultSet;
-		String query = "update produto SET quantidade = ? WHERE nome = 'TÊNIS NIKE AIR FORCE 1 FONTANKA FEMININOO'";
 
-		preparedStatement = con.prepareStatement(query);
-		preparedStatement.setString(1, Integer.toString(i));
-		resultSet = preparedStatement.executeUpdate();
-		
-		}
-	
+		System.out.println("Adicionou todos");
 
-	
-	public void atualizaQuantidadeTenisTres(ProdutoDto produtoDto) throws SQLException {
-			var con = DriverManager.getConnection(URL, USER, PASSWORD);
-			
-			ProdutoDAO produtoDAO = new ProdutoDAO();
-			int i = produtoDAO.terceiroTenisValorAntigo();
-			i = i - produtoDto.getTenis1();
-			PreparedStatement preparedStatement;
-			int resultSet;
-			String query = "update produto SET quantidade = ? WHERE nome = 'TÊNIS NIKE AIR FORCE 1 07 SHROUD'";
-
-			preparedStatement = con.prepareStatement(query);
-			preparedStatement.setString(1, Integer.toString(i));
-			resultSet = preparedStatement.executeUpdate();
-			
-			}
-	
-	public void atualizaQuantidadeTenisQuatro(ProdutoDto produtoDto) throws SQLException {
-		var con = DriverManager.getConnection(URL, USER, PASSWORD);
-		
-		ProdutoDAO produtoDAO = new ProdutoDAO();
-		int i = produtoDAO.quartoTenisValorAntigo();
-		i = i - produtoDto.getTenis1();
-		PreparedStatement preparedStatement;
-		int resultSet;
-		String query = "update produto SET quantidade = ? WHERE nome = 'TÊNIS NIKE AIR FORCE 1 07 SPACE JAM MASCULINO'";
-
-		preparedStatement = con.prepareStatement(query);
-		preparedStatement.setString(1, Integer.toString(i));
-		resultSet = preparedStatement.executeUpdate();
-		
-		}	
-	
-	public int primeiroTenisValorAntigo() throws SQLException {
-		var con = DriverManager.getConnection(URL, USER, PASSWORD);
-
-		PreparedStatement preparedStatement;
-		ResultSet resultSet;
-		String query = "select quantidade from Produto WHERE nome = 'TÊNIS NIKE AIR FORCE 1 SHADOW FEMININO'";
-		int i = 0;
-		preparedStatement = con.prepareStatement(query);
-		resultSet = preparedStatement.executeQuery();
-		if(resultSet.next()){
-			 i = Integer.parseInt(resultSet.getString(1));
+		return listAll;
 	}
-		System.out.println(i + "retorno");
-	
-		return i;
-		
-		}
-	public int segundoTenisValorAntigo() throws SQLException {
-		var con = DriverManager.getConnection(URL, USER, PASSWORD);
-
-		PreparedStatement preparedStatement;
-		ResultSet resultSet;
-		String query = "select quantidade from Produto WHERE nome = 'TÊNIS NIKE AIR FORCE 1 FONTANKA FEMININOO'";
-		int i = 0;
-		preparedStatement = con.prepareStatement(query);
-		resultSet = preparedStatement.executeQuery();
-		if(resultSet.next()){
-			 i = Integer.parseInt(resultSet.getString(1));
-	}
-		System.out.println(i + "retorno");
-	
-		return i;
-		
-		}
-	
-	public int terceiroTenisValorAntigo() throws SQLException {
-		var con = DriverManager.getConnection(URL, USER, PASSWORD);
-
-		PreparedStatement preparedStatement;
-		ResultSet resultSet;
-		String query = "select quantidade from Produto WHERE nome = 'TÊNIS NIKE AIR FORCE 1 07 SHROUD'";
-		int i = 0;
-		preparedStatement = con.prepareStatement(query);
-		resultSet = preparedStatement.executeQuery();
-		if(resultSet.next()){
-			 i = Integer.parseInt(resultSet.getString(1));
-	}
-		System.out.println(i + "retorno");
-	
-		return i;
-		
-		}
-	
-	public int quartoTenisValorAntigo() throws SQLException {
-		var con = DriverManager.getConnection(URL, USER, PASSWORD);
-
-		PreparedStatement preparedStatement;
-		ResultSet resultSet;
-		String query = "select quantidade from Produto WHERE nome = 'TÊNIS NIKE AIR FORCE 1 07 SPACE JAM MASCULINO'";
-		int i = 0;
-		preparedStatement = con.prepareStatement(query);
-		resultSet = preparedStatement.executeQuery();
-		if(resultSet.next()){
-			 i = Integer.parseInt(resultSet.getString(1));
-	}
-		System.out.println(i + "retorno");
-	
-		return i;
-		
-		}
 }
