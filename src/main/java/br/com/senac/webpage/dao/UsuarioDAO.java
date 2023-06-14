@@ -24,7 +24,7 @@ public class UsuarioDAO {
 	public void inserir(Usuario usuario) throws SQLException {
 		var con = DriverManager.getConnection(URL, USER, PASSWORD);
 
-		var ps = con.prepareStatement("INSERT INTO usuario (id, nome, email, senha, cpf, sexo, nascimento, cidade, estado, logradouro, numero, complemento, cep, bairro, grupo) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+		var ps = con.prepareStatement("INSERT INTO usuario (id, nome, email, senha, cpf, sexo, nascimento, cidade, estado, logradouro, numero, complemento, cep, bairro, grupo, status) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
 		ps.setString(1, usuario.getId());
 		ps.setString(2, usuario.getNome());
 		ps.setString(3, usuario.getEmail());
@@ -40,6 +40,8 @@ public class UsuarioDAO {
 		ps.setString(13, usuario.getCep());
 		ps.setString(14, usuario.getBairro());
 		ps.setString(15, usuario.getGrupo());
+		ps.setString(16, usuario.getStatus());
+		
 		ps.execute();
 
 		con.close();

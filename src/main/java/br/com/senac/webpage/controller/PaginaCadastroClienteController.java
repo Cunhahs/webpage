@@ -3,6 +3,9 @@ package br.com.senac.webpage.controller;
 import java.io.UnsupportedEncodingException;
 import java.security.NoSuchAlgorithmException;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -38,6 +41,12 @@ public class PaginaCadastroClienteController {
     	usuario.setGrupo("Cliente");
     	usuario.setStatus("ativo");
     	
+    	SimpleDateFormat sdf = new SimpleDateFormat("HH:mm:ss");
+    	Date hora = Calendar.getInstance().getTime(); // Ou qualquer outra forma que tem
+    	String dataFormatada = sdf.format(hora);	
+    	String idcripto = cripto.crip(dataFormatada);
+    	usuario.setId(idcripto);
+    		
     	UsuarioDAO usuarioDAO = new UsuarioDAO();
     	usuarioDAO.inserir(usuario);
 			
