@@ -20,7 +20,7 @@ import br.com.senac.webpage.util.Cripto;
 
 @Controller
 @RequestMapping("/paginaProdutos2")
-public class PaginaProduto2Controller {
+public class PaginaProdutoController {
 
     @GetMapping
     public String init(final Model model) {

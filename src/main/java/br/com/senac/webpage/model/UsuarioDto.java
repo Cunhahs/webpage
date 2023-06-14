@@ -1,6 +1,8 @@
 package br.com.senac.webpage.model;
 
+import jakarta.annotation.ManagedBean;
 
+@ManagedBean
 public class UsuarioDto {
 
 	private String id;

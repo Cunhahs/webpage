@@ -46,8 +46,9 @@ public class LoginClienteController {
     	try {
 			boolean valido = usuarioDAO.validarCliente(usuarioDto.getEmail(), senhaCriptografada, "cliente");
 			if (valido == true) {
-
+				
 		    	ModelAndView modelAndView = new ModelAndView("redirect:landingPageLogado");
+		    	
 		    	return modelAndView;		
 			}
 		

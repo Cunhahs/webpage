@@ -49,7 +49,8 @@ public class LoginController {
 			boolean valido = usuarioDAO.validarAdmin(usuarioDto.getEmail(), senhaCriptografada, "Administrador");
 			if (valido == true) {
 				ModelAndView modelAndView = new ModelAndView("redirect:paginaEscolherLista");
-		    	System.out.println("init");
+				EscolherListaController.id = usuarioDto.getId();
+				
 		    	return modelAndView;		
 			}
 		
