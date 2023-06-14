@@ -13,6 +13,21 @@ public class Produto {
 	private String situacao;
 	private String linkImg;
 	
+	public Produto() {
+	}
+
+	public Produto(String codigo, String nome, String descricao, String quantidade, String avaliacao, String preco,
+			String situacao, String linkImg) {
+		this.codigo = codigo;
+		this.nome = nome;
+		this.descricao = descricao;
+		this.quantidade = quantidade;
+		this.avaliacao = avaliacao;
+		this.preco = preco;
+		this.situacao = situacao;
+		this.linkImg = linkImg;
+	}
+
 	public String getCodigo() {
 		return codigo;
 	}

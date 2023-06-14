@@ -24,7 +24,7 @@ public class PaginaProdutoController {
 
     @GetMapping
     public String init(final Model model) {
-    	model.addAttribute("produto", new Produto());
+    	//model.addAttribute("produto", new Produto());
     	return "paginaProduto2";
         
     }

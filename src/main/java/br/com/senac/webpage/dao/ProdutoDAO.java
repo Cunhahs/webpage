@@ -49,8 +49,13 @@ public class ProdutoDAO {
 		while (ps.next()) {
 			ProdutoAllDto n = new ProdutoAllDto();
 
+			n.setCodigo(ps.getString("codigo"));
 			n.setNome(ps.getString("nome"));
+			n.setDescricao(ps.getString("descricao"));
+			n.setQuantidade(ps.getString("quantidade"));
+			n.setAvaliacao(ps.getString("avaliacao"));
 			n.setPreco(ps.getString("preco"));
+			n.setSituacao(ps.getString("situacao"));
 			n.setLinkImg("images/"+ ps.getString("link"));
 			System.out.println(n.getLinkImg());
 

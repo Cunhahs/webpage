@@ -30,6 +30,14 @@
                     </tr>
                 </thead>
                 <tbody>
+                    <tr th:each=" produto : ${produtos}">
+                        <td th:text="${produto.codigo}"></td>
+                        <td th:text="${produto.nome}"></td>
+                        <td th:text="${produto.quantidade}"></td>
+                        <td th:text="${produto.preco}"></td>
+                        <td th:text="${produto.situacao}"></td>
+                        <td th:text="${produto.linkImg}"></td> 
+                    </tr>
                 </tbody>
             </table>
         </div>
@@ -37,7 +45,7 @@
                     
         <div class="modal-container">
             <div class="modal">
- <form th:action="@{/paginaDeProduto}" th:object="${produto}" method="post">
+ <form th:action="@{/paginaDeProduto}" th:object="${produtos}" method="post">
 
 					<label for="m-codigo">Código</label>
                     <input id="m-codigo" type="text" h:field="*{codigo}" required />
