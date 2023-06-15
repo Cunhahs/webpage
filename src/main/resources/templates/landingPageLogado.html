@@ -48,7 +48,7 @@
 
             <h1>ESTOQUE NOVOS</h1>
             <div class="Container-roupas">
-                <form class="roupa" th:each=" produto : ${produtos}" th:action="@{/landingPageLogado/produto?${produto.nome}}" th:object="${produto}" method="post">
+                <form class="roupa" th:each=" produto : ${produtos}" th:action="@{/landingPageLogado/{path}(path=${produto.nome})}" th:object="${produto}" method="get">
 					<img src="" alt="" class="product-image" th:src="${produto.linkImg}" > <!--  -->
                     <p class="product-title" th:text="${produto.nome}" th:name="nome" th:id="nome"></p>
                     <div class="product-price-container">
