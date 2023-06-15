@@ -31,10 +31,11 @@
               <strong th:text="${produto.nome}" class="cart-product-title"></strong>
             </td>
             <td>
-              <span th:text="${produto.preco}" class="cart-product-price"></span>
+				
+              <span th:text="${produto.preco}" class="cart-product-price" ></span>
             </td>
             <td>
-              <input type="number" value="0" min="0" class="product-qtd-input">
+              <input type="number" value="1" min="1" class="product-qtd-input" id="number" name="number">
               <button id="button-remover" type="button" class="remove-product-button">Remover</button>
             </td>
           </tr>
@@ -45,7 +46,7 @@
           <tr>
             <td colspan="3" class="cart-total-container">
               <strong>Total</strong>
-              <span>R$0,00</span>
+              <td th:text="${#numbers.formatCurrency(#aggregates.sum(produtos.![preco]).multiply(BigDecimal.valueOf(1)))}">R$ 180,00</td>
             </td>
           </tr>
         </tfoot>

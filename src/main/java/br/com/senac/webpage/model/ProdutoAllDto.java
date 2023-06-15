@@ -7,7 +7,7 @@ public class ProdutoAllDto {
     private String descricao;
     private String quantidade;
     private String avaliacao;
-    private String preco;
+    private double preco;
     private String situacao;
     private String linkImg;
     
@@ -47,11 +47,11 @@ public class ProdutoAllDto {
     public void setNome(String nome) {
         this.nome = nome;
     }
-    public String getPreco() {
+    public double getPreco() {
         return preco;
     }
-    public void setPreco(String preco) {
-        this.preco = preco;
+    public double setPreco(double preco) {
+        return this.preco = preco;
     }
 	public String getLinkImg() {
 		return linkImg;

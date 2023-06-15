@@ -32,15 +32,20 @@ public class CarrinhoClienteController {
     public ModelAndView init(final Model model) throws SQLException {  
     	 ModelAndView mv = new ModelAndView("carrinhoClienteLogado");
     	 java.util.List<ProdutoAllDto> produtos = null;
-
+    	 double valor = 0;
     	System.out.println("carrinho cliente get");
     	ProdutoDAO produtoDAO = new ProdutoDAO();
     	if (ListCarrinho.carrinho != null) {
     		 produtos = produtoDAO.getProdutoCarrinho(ListCarrinho.carrinho);		
 		}
           
+    	for (ProdutoAllDto produtoAllDto : produtos) {
+			
+		}
     	System.out.println(produtos.get(0).getPreco());
           mv.addObject("produtos", produtos);
+//          valor fim = 
+//          mv.addObject();
 
          return mv;
     	

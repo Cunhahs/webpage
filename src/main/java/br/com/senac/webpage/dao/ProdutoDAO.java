@@ -54,7 +54,7 @@ public class ProdutoDAO {
 			n.setDescricao(ps.getString("descricao"));
 			n.setQuantidade(ps.getString("quantidade"));
 			n.setAvaliacao(ps.getString("avaliacao"));
-			n.setPreco(ps.getString("preco"));
+			n.setPreco(Double.parseDouble(ps.getString("preco").replace("$", "").replace("R", "").replace(",", ".")));
 			n.setSituacao(ps.getString("situacao"));
 			n.setLinkImg("images/" + ps.getString("link"));
 			System.out.println(n.getLinkImg());
@@ -93,7 +93,7 @@ public class ProdutoDAO {
 				produto.setCodigo(ps.getString("codigo"));
 				produto.setDescricao(ps.getString("descricao"));
 				produto.setLinkImg(ps.getString("link"));
-				produto.setPreco(ps.getString("preco"));
+				produto.setPreco(Double.parseDouble(ps.getString("preco").replace("$", "").replace("R", "").replace(",", ".")));
 				produto.setQuantidade(ps.getString("quantidade"));
 				produto.setSituacao(ps.getString("situacao"));
 
