@@ -39,32 +39,19 @@ public class CarrinhoClienteController {
     		 produtos = produtoDAO.getProdutoCarrinho(ListCarrinho.carrinho);		
 		}
           
+    	System.out.println(produtos.get(0).getPreco());
           mv.addObject("produtos", produtos);
 
          return mv;
     	
     }  
     
-    @PostMapping
-    public ModelAndView result(@ModelAttribute ProdutoAllDto produtoAllDto) throws NoSuchAlgorithmException, UnsupportedEncodingException {
-    	
-		for (String s : ListCarrinho.carrinho) {
-			if (s.equals(produtoAllDto.getDescricao())) {
-				i=1;
-			}
-		}
-    	if (i==0) {
-    		ListCarrinho.carrinho.add(produtoAllDto.getDescricao());	
-    		System.out.println(ListCarrinho.carrinho.get(0));
-		}
-    	
-    	i=0;
-    	
-    
-        	ModelAndView modelAndView = new ModelAndView("redirect:carrinhoCliente");
-        	return modelAndView;	
-		
-    }      
+//    @PostMapping
+//    public ModelAndView result(@ModelAttribute ProdutoAllDto produtoAllDto) throws NoSuchAlgorithmException, UnsupportedEncodingException {
+//    	
+//
+//		
+//    }      
     
 //    @PostMapping
 //    public ModelAndView result(ProdutoDto produtoDto) throws NoSuchAlgorithmException, UnsupportedEncodingException, SQLException {
