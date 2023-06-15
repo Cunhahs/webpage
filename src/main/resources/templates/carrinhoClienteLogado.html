@@ -24,67 +24,6 @@
           </tr>
         </thead>
 
-        <!--<tbody> 
-			<form th:action="@{/carrinhoClienteLogado}" th:object="${produtoDto}" method="post">
-          <tr class="cart-product">
-            <td class="product-identification">
-              <img src="images/air force 1 colorido.jpg" alt="TÊNIS NIKE AIR FORCE 1 SHADOW FEMININO"
-                class="cart-product-image">
-              <strong class="cart-product-title">TÊNIS NIKE AIR FORCE 1 SHADOW FEMININO</strong>
-            </td>
-            <td>
-              <span class="cart-product-price">R$ 1099,99</span>
-            </td>
-            <td>
-              <input type="number" value="1" min="0" class="product-qtd-input" th:field="*{tenis1}">
-              <button id="button-remover" type="button" class="remove-product-button">Remover</button>
-            </td>
-          </tr>
-          <tr class="cart-product">
-            <td class="product-identification">
-              <img src="images/air force 1 fontanka.jpg" alt="TÊNIS NIKE AIR FORCE 1 FONTANKA FEMININO"
-                class="cart-product-image">
-              <strong class="cart-product-title">TÊNIS NIKE AIR FORCE 1 FONTANKA FEMININO</strong>
-            </td>
-            <td>
-              <span class="cart-product-price">R$ 1199,99</span>
-            </td>
-            <td>
-              <input type="number" value="1" min="0" class="product-qtd-input" th:field="*{tenis2}">
-              <button id="button-remover" type="button" class="remove-product-button">Remover</button>
-            </td>
-          </tr>
-          <tr class="cart-product">
-            <td class="product-identification">
-              <img src="images/air force 1 shroud.jpg" alt="TÊNIS NIKE AIR FORCE 1 '07 SHROUD"
-                class="cart-product-image">
-              <strong class="cart-product-title">TÊNIS NIKE AIR FORCE 1 '07 SHROUD</strong>
-            </td>
-            <td>
-              <span class="cart-product-price">R$ 699,99</span>
-            </td>
-            <td>
-              <input type="number" value="1" min="0" class="product-qtd-input" th:field="*{tenis3}">
-             <button id="button-remover" type="button" class="remove-product-button">Remover</button>
-            </td>
-         
-          </tr>
-          <tr class="cart-product">
-            <td class="product-identification">
-              <img src="images/Tenis-Nike-Air-Force-1-07-x-Space-Jam-Masculino-Branco.jpg"
-                alt="TÊNIS NIKE AIR FORCE 1 07 SPACE JAM MASCULINO" class="cart-product-image">
-              <strong class="cart-product-title">TÊNIS NIKE AIR FORCE 1 07 SPACE JAM MASCULINO</strong>
-            </td>
-            <td>
-              <span class="cart-product-price">R$ 899,99</span>
-            </td>
-            <td>
-              <input type="number" value="1" min="0" class="product-qtd-input" th:field="*{tenis4}">
-              <button id="button-remover" type="button" class="remove-product-button">Remover</button>
-            </td>
-          </tr>
-        </tbody> -->
-
         <tbody>
           <tr th:each="produto:${produtos}" class="cart-product">
             <td class="product-identification">

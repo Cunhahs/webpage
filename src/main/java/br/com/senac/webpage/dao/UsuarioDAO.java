@@ -48,12 +48,9 @@ public class UsuarioDAO {
 	}
 
 	public boolean validarCliente(String email, String senha, String grupo) throws SQLException {
-		System.out.println("cheguei");
 		var con = DriverManager.getConnection(URL, USER, PASSWORD);
-		System.out.println("entrei no banco");
 		PreparedStatement preparedStatement;
 		ResultSet resultSet;
-		System.out.println("entrei no banco");
 		String query = "select * from Usuario where email = ? and senha = ? and grupo = ?";
 		System.out.println("entrei no banco");
 		preparedStatement = con.prepareStatement(query);

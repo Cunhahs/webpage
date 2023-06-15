@@ -15,15 +15,18 @@ import org.springframework.web.servlet.ModelAndView;
 
 import br.com.senac.webpage.dao.ProdutoDAO;
 import br.com.senac.webpage.dao.UsuarioDAO;
+import br.com.senac.webpage.model.Produto;
 import br.com.senac.webpage.model.ProdutoAllDto;
 import br.com.senac.webpage.model.UsuarioDto;
 import br.com.senac.webpage.util.Cripto;
+import br.com.senac.webpage.util.IdSession;
+import br.com.senac.webpage.util.ListCarrinho;
 
 @Controller
 @RequestMapping("/landingPageLogado")
 public class LandingPageLogadoController {
 
-
+	int i;
     @GetMapping
     public ModelAndView init(Model model) throws SQLException {
         ModelAndView mv = new ModelAndView();
@@ -35,7 +38,18 @@ public class LandingPageLogadoController {
 
         return mv;
     }
-
-
     
+    @PostMapping
+    public ModelAndView result(@ModelAttribute String produto) throws NoSuchAlgorithmException, UnsupportedEncodingException {
+    	System.out.println("Post landing page");
+    	System.out.println(produto);
+    	
+    	if (produto!=null) {
+    		ListCarrinho.carrinho.add(produto);		
+		}
+    
+        	ModelAndView modelAndView = new ModelAndView("redirect:carrinhoCliente");
+        	return modelAndView;	
+		
+    }     
 }

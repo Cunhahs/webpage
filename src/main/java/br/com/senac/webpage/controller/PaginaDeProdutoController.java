@@ -24,12 +24,6 @@ import br.com.senac.webpage.util.Cripto;
 @RequestMapping("/paginaDeProdutos")
 public class PaginaDeProdutoController {
 
-    /*@GetMapping
-    public String init(final Model model) {
-    	model.addAttribute("produto", new Produto());
-    	return "paginaDeProdutos";
-        
-    }*/
 
     @GetMapping
     public ModelAndView init(Model model) throws SQLException {
