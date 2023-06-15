@@ -26,18 +26,23 @@ import jakarta.persistence.PostUpdate;
 @Controller
 @RequestMapping("/carrinhoCliente")
 public class CarrinhoClienteController {
-
-
 	int i;
+	
     @GetMapping    
-    public String init(final Model model) throws SQLException {  
+    public ModelAndView init(final Model model) throws SQLException {  
+    	 ModelAndView mv = new ModelAndView("carrinhoClienteLogado");
+    	 java.util.List<ProdutoAllDto> produtos = null;
+
     	System.out.println("carrinho cliente get");
     	ProdutoDAO produtoDAO = new ProdutoDAO();
     	if (ListCarrinho.carrinho != null) {
-    		java.util.List<ProdutoAllDto> listaProdutosCarrinho = produtoDAO.getProdutoCarrinho(ListCarrinho.carrinho);		
+    		 produtos = produtoDAO.getProdutoCarrinho(ListCarrinho.carrinho);		
 		}
-		
-    	return "carrinhoClienteLogado";
+          
+          mv.addObject("produtos", produtos);
+
+         return mv;
+    	
     }  
     
     @PostMapping

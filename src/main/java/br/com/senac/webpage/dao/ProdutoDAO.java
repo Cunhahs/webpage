@@ -1,6 +1,7 @@
 package br.com.senac.webpage.dao;
 
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -72,9 +73,17 @@ public class ProdutoDAO {
 		List<ProdutoAllDto> listAll = new ArrayList<ProdutoAllDto>();
 
 		for (String string : carrinho) {
-			String sql = "select * from produto where descricao =" + string;
-			Statement stm = con.createStatement();
-			ResultSet ps = stm.executeQuery(sql);
+			System.out.println(string);
+			
+			PreparedStatement preparedStatement;
+			ResultSet resultSet;
+			String query = "select * from produto where nome = ?";
+
+			preparedStatement = con.prepareStatement(query);
+			preparedStatement.setString(1, string);
+		
+			ResultSet ps = preparedStatement.executeQuery();
+			
 			while (ps.next()) {
 
 				ProdutoAllDto produto = new ProdutoAllDto();

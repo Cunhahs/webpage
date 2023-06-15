@@ -35,16 +35,19 @@ public class LandingPageLogadoController {
         return mv;
     }
     
-    @GetMapping("/landingPageLogado/{nome}")
+    @PostMapping("/{nome}")
     public ModelAndView result(@PathVariable("nome") String path)  throws NoSuchAlgorithmException, UnsupportedEncodingException {
+    	System.out.println();
+    	
     	System.out.println("Post landing page");
     	System.out.println(path);
     	
     	if (path!=null) {
-    		ListCarrinho.carrinho.add(path);		
+    		ListCarrinho.carrinho.add(path);
+    	System.out.println(	ListCarrinho.carrinho.get(0));
 		}
     
-        	ModelAndView modelAndView = new ModelAndView("redirect:carrinhoCliente");
+        	ModelAndView modelAndView = new ModelAndView("redirect:/carrinhoCliente");
         	return modelAndView;	
 		
     }     
