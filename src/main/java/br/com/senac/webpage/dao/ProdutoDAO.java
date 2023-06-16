@@ -36,11 +36,11 @@ public class ProdutoDAO {
 		ps.setString(1, produto.getCodigo());
 		ps.setString(2, produto.getNome());
 		ps.setString(3, produto.getDescricao());
-		//ps.setString(4, produto.getQuantidade());
+		ps.setString(4, Integer.toString(produto.getQuantidade()));
 		ps.setString(5, produto.getAvaliacao());
-		//ps.setString(6, produto.getPreco());
+		ps.setString(6, Double.toString(produto.getPreco()));
 		ps.setString(7, produto.getSituacao());
-		//ps.setString(8, produto.getLink());
+		ps.setString(8, produto.getLinkImg());
 		ps.execute();
 
 		con.close();
@@ -108,5 +108,23 @@ public class ProdutoDAO {
 		}
 			
 		return produto;
+	}
+	
+	public double quantidadeEstoque(String nomeProduto) throws SQLException {
+		var con = DriverManager.getConnection(URL, USER, PASSWORD);
+		List<ProdutoAllDto> listAll = new ArrayList<ProdutoAllDto>();
+			double quantidade=0;
+			PreparedStatement preparedStatement;
+			ResultSet resultSet;
+			String query = "select * from produto where nome = ?";
+
+			preparedStatement = con.prepareStatement(query);
+			preparedStatement.setString(1, nomeProduto);
+		
+			ResultSet ps = preparedStatement.executeQuery();
+
+			quantidade = Double.parseDouble(ps.getString("preco").replace("$", "").replace("R", "").replace(",", "."));
+		
+		return quantidade;
 	}
 }

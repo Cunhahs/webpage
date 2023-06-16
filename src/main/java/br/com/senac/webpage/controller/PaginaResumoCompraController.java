@@ -27,12 +27,12 @@ public class PaginaResumoCompraController {
 
 public static ArrayList<ProdutoAllDto> produtos = CarrinhoClienteController.produtos;	
 double soma = 0;
-double frete = 0;
+
 	
 @GetMapping    
 public ModelAndView init(final Model model) throws SQLException { 
 	 soma = 0;
-	 
+	 double frete = CarrinhoClienteController.frete;
 	 for (ProdutoAllDto produtoAllDto : produtos) {
 		System.out.println(produtoAllDto.getQuantidade());
 	}

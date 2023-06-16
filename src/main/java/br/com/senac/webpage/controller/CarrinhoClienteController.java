@@ -32,12 +32,13 @@ import jakarta.persistence.PostUpdate;
 public class CarrinhoClienteController {
 	public static ArrayList<ProdutoAllDto> produtos = new ArrayList<>();	
 	 double soma = 0;
-	 double frete = 0;
+	 public static double frete;
 		
     @GetMapping    
     public ModelAndView init(final Model model) throws SQLException { 
     	 soma = 0;
- 	
+    	 System.out.println("CarrinhoController");
+    	 System.out.println(frete);
     	double somatemp = 0;
     	 ModelAndView mv = new ModelAndView("carrinhoClienteLogado"); 
     	System.out.println("carrinho cliente get");

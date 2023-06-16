@@ -12,8 +12,6 @@ import java.util.List;
 import org.springframework.stereotype.Repository;
 
 import br.com.senac.webpage.model.Compra;
-import br.com.senac.webpage.model.Produto;
-import br.com.senac.webpage.model.ProdutoAllDto;
 
 @Repository
 public class CompraDAO {
