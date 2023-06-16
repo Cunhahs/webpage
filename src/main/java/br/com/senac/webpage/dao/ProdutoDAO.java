@@ -68,26 +68,21 @@ public class ProdutoDAO {
 		return listAll;
 	}
 
-	public List<ProdutoAllDto> getProdutoCarrinho(List<String> carrinho) throws SQLException {
+	public ProdutoAllDto getProdutoCarrinho(String produtoDesejado) throws SQLException {
 		var con = DriverManager.getConnection(URL, USER, PASSWORD);
 		List<ProdutoAllDto> listAll = new ArrayList<ProdutoAllDto>();
-
-		for (String string : carrinho) {
-			System.out.println(string);
 			
 			PreparedStatement preparedStatement;
 			ResultSet resultSet;
 			String query = "select * from produto where nome = ?";
 
 			preparedStatement = con.prepareStatement(query);
-			preparedStatement.setString(1, string);
+			preparedStatement.setString(1, produtoDesejado);
 		
 			ResultSet ps = preparedStatement.executeQuery();
-			
+
+			ProdutoAllDto produto = new ProdutoAllDto();			
 			while (ps.next()) {
-
-				ProdutoAllDto produto = new ProdutoAllDto();
-
 				produto.setNome(ps.getString("nome"));
 				produto.setAvaliacao(ps.getString("avaliacao"));
 				produto.setCodigo(ps.getString("codigo"));
@@ -99,12 +94,10 @@ public class ProdutoDAO {
 				
 				produto.setValorTotal(produto.getPreco());
 
-				listAll.add(produto);
 				System.out.println("ADICIONOU 1" + produto.getNome());
 
-			}
-			System.out.println("Adicionou Todos!");
 		}
-		return listAll;
+			
+		return produto;
 	}
 }

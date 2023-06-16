@@ -4,6 +4,7 @@ import java.io.UnsupportedEncodingException;
 import java.security.NoSuchAlgorithmException;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.stream.Collectors;
 
 import org.hibernate.mapping.List;
 import org.springframework.stereotype.Controller;
@@ -27,78 +28,117 @@ import jakarta.persistence.PostUpdate;
 @Controller
 @RequestMapping("/carrinhoCliente")
 public class CarrinhoClienteController {
-	int i;
-	
-	
+	 ArrayList<ProdutoAllDto> produtos = new ArrayList<>();	
+	 double soma = 0;
+		
     @GetMapping    
-    public ModelAndView init(final Model model) throws SQLException {  
-    	 ModelAndView mv = new ModelAndView("carrinhoClienteLogado");
-    	 java.util.List<ProdutoAllDto> produtos = null;
-    	 double valor = 0;
+    public ModelAndView init(final Model model) throws SQLException { 
+    	 soma = 0;
+ 	
+    	double somatemp = 0;
+    	 ModelAndView mv = new ModelAndView("carrinhoClienteLogado"); 
     	System.out.println("carrinho cliente get");
     	ProdutoDAO produtoDAO = new ProdutoDAO();
-    	if (ListCarrinho.carrinho != null) {
-    		 produtos = produtoDAO.getProdutoCarrinho(ListCarrinho.carrinho);		
-		}
+    	
+		if (produtos.size() != ListCarrinho.carrinho.size()) {
+			for (String s : ListCarrinho.carrinho) {
+				System.out.println(s);
+				{
+					boolean encontrei = false;
+					for (ProdutoAllDto produtoAllDto : produtos) {
+						if (produtoAllDto.getNome().equals(s)) {
+							encontrei = true;
+						}
 
-    	double soma = 0;
+					}
+					if (encontrei == false) {
+						produtos.add(produtoDAO.getProdutoCarrinho(s));
+					}
+
+				}
+			}
+		} 
+    	for (ProdutoAllDto produto : produtos) {
+    		if(produto.getQuantidade()>5)produto.setQuantidade(0);
+		}
+    	
     	for (ProdutoAllDto produtoAllDto : produtos) {
-			produtoAllDto.setQuantidade(1);
-			System.out.println(produtoAllDto.getValorTotal());
-			soma = soma + (produtoAllDto.getPreco() * produtoAllDto.getQuantidade());
+    		System.out.println("--------------------" + produtoAllDto.getNome());
+			somatemp = produtoAllDto.getPreco() * produtoAllDto.getQuantidade();
+			soma = soma + somatemp;
 		}
     	
     	
-
         mv.addObject("soma",soma);
-          mv.addObject("produtos", produtos);
+        mv.addObject("produtos", produtos);
 
-         return mv;
+        return mv;
     	
     }  
 
-	@GetMapping("alterarQuantidade/{nome}/{acao}")
-	public String alterarQuantidade(@PathVariable String nome, @PathVariable Integer acao) throws SQLException {
-		ProdutoDAO produtoDAO = new ProdutoDAO();
-    	
-		 java.util.List<ProdutoAllDto> produtos = null;
-		 if (ListCarrinho.carrinho != null) {
-    		 produtos = produtoDAO.getProdutoCarrinho(ListCarrinho.carrinho);		
-		}
-		 
+	@GetMapping("/{nome}/{quantidade}")
+	public ModelAndView alterarQuantidade(@PathVariable("nome") String nome, @PathVariable("quantidade") Integer acao) throws SQLException {
+		ModelAndView mv = new ModelAndView("redirect:/carrinhoCliente"); 
+		System.out.println("PEGAR QUANTIDADE E NOME " + acao + " " + nome);
+    		 
 		
 		for(ProdutoAllDto p : produtos) {
 			if(p.getNome().equals(nome)) {
 				if(acao == 1) {
 					p.setQuantidade(p.getQuantidade() + 1);
-					p.setValorTotal(0.); //nao tem valor total
-					p.setValorTotal(p.getValorTotal() + (p.getQuantidade() * p.getPreco()));
 				} else if (acao == 0) {
 					if(p.getQuantidade() <= 0) {
 						break;
 					}
 					p.setQuantidade(p.getQuantidade() - 1);
-					p.setValorTotal(0.);
-					p.setValorTotal(p.getValorTotal() + (p.getQuantidade() * p.getPreco()));
+					System.out.println("PASSEI");
 				}
 				break;
 			}
 		}
 
-		return "redirect:/carrinhoCliente";
+        mv.addObject("soma",soma);
+        mv.addObject("produtos", produtos);
+        return mv;
 	}
-    
-//    @PostMapping
-//    public ModelAndView result(@ModelAttribute ProdutoAllDto produtoAllDto) throws NoSuchAlgorithmException, UnsupportedEncodingException {
-//    	
-//
-//		
-//    }      
-    
-//    @PostMapping
-//    public ModelAndView result(ProdutoDto produtoDto) throws NoSuchAlgorithmException, UnsupportedEncodingException, SQLException {
-//    	
-//       	ModelAndView modelAndView = new ModelAndView("redirect:paginaCheckout");
-//        	return modelAndView;	
-//    }
+
+	@GetMapping("/{nome}")
+	public ModelAndView alterarQuantidade(@PathVariable("nome") String nome) throws SQLException {
+		ModelAndView mv = new ModelAndView("redirect:/carrinhoCliente"); 
+		System.out.println("---------------");
+		
+		for (int i = 0; i < produtos.size(); i++) {
+			ProdutoAllDto p = produtos.get(i);
+			if (p.getNome().equals(nome)) {
+				// Encontrou uma pessoa cadastrada com nome "Pedro".
+
+				// Remove.
+				produtos.remove(p);
+				System.out.println("Remove 1");
+
+				// Sai do loop.
+				break;
+			}
+		}
+		for (int i = 0; i < ListCarrinho.carrinho.size(); i++) {
+			String p = ListCarrinho.carrinho.get(i);
+			if (p.equals(nome)) {
+				// Encontrou uma pessoa cadastrada com nome "Pedro".
+
+				// Remove.
+				ListCarrinho.carrinho.remove(p);
+
+				System.out.println("Remove 2");
+
+				// Sai do loop.
+				break;
+			}
+		}
+		
+
+        mv.addObject("soma",soma);
+        mv.addObject("produtos", produtos);
+        return mv;
+	}
+	
 }
