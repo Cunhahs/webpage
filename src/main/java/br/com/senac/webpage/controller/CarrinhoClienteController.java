@@ -23,13 +23,14 @@ import br.com.senac.webpage.model.Produto;
 import br.com.senac.webpage.model.ProdutoAllDto;
 import br.com.senac.webpage.model.ProdutoDto;
 import br.com.senac.webpage.model.UsuarioAllDto;
+import br.com.senac.webpage.util.IdSession;
 import br.com.senac.webpage.util.ListCarrinho;
 import jakarta.persistence.PostUpdate;
 
 @Controller
 @RequestMapping("/carrinhoCliente")
 public class CarrinhoClienteController {
-	 ArrayList<ProdutoAllDto> produtos = new ArrayList<>();	
+	public static ArrayList<ProdutoAllDto> produtos = new ArrayList<>();	
 	 double soma = 0;
 	 double frete = 0;
 		
@@ -156,10 +157,25 @@ public class CarrinhoClienteController {
 		frete=10;
         return mv;
 	}	@GetMapping("/quinze")
-	public ModelAndView FretePrincipal(String quinze) throws SQLException {
+	public ModelAndView fretePrincipal(String quinze) throws SQLException {
 		ModelAndView mv = new ModelAndView("redirect:/carrinhoCliente"); 
 		frete=15;
         return mv;
+	}
+	
+	@GetMapping("/finalizarCompra")
+	public ModelAndView finalizacao() throws SQLException {
+		ModelAndView modelAndView;
+		
+	if (IdSession.idMain == null) {
+		 modelAndView = new ModelAndView("redirect:/loginCliente/carrinho");
+		
+	}
+	else {
+		 modelAndView = new ModelAndView("redirect:/paginaCheckout");
+	}
+		return modelAndView;
+		
 	}
 
 }

@@ -28,6 +28,13 @@ public class LoginClienteController {
     	return "paginaLoginCliente";
     }
     
+    @GetMapping("/carrinho")
+    public String initCarrinho(final Model model) {  	
+    	model.addAttribute("usuarioDto", new UsuarioDto());
+    	System.out.println("init");
+    	return "paginaLoginClienteTemp";
+    }
+    
     public String cadastrar(final Model model) {  	
     	System.out.println("init 2");
     	return "paginaCadastroCliente";
@@ -65,5 +72,39 @@ public class LoginClienteController {
         	ModelAndView modelAndView = new ModelAndView("redirect:loginCliente");
         	return modelAndView;	
 		
-    } 
+    }
+    
+    @PostMapping("/loginClienteTemp")
+    public ModelAndView resultTemp(@ModelAttribute UsuarioDto usuarioDto) throws NoSuchAlgorithmException, UnsupportedEncodingException {
+    	System.out.println(usuarioDto.getEmail());
+    	System.out.println(usuarioDto.getSenha());
+    	Cripto cripto = new Cripto();
+    	String senhaCriptografada = cripto.crip(usuarioDto.getSenha());
+    	System.out.println(senhaCriptografada);
+    	
+    	System.out.println(usuarioDto.getRequest());
+    	
+    	UsuarioDAO usuarioDAO = new UsuarioDAO();
+    	try {
+			boolean valido = usuarioDAO.validarCliente(usuarioDto.getEmail(), senhaCriptografada, "cliente");
+			if (valido == true) {
+				
+		    	ModelAndView modelAndView = new ModelAndView("redirect:/paginaCheckout");
+		    	
+		    	IdSession.idMain = usuarioDAO.getId(usuarioDto.getEmail(), senhaCriptografada);
+		    	IdSession.idType = "cliente";
+		    	System.out.println("Alterando sessão");
+		    	System.out.println(IdSession.idMain);
+		    	
+		    	return modelAndView;		
+			}
+		
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+        	ModelAndView modelAndView = new ModelAndView("redirect:/loginCliente/carrinho");
+        	return modelAndView;	
+		
+    }
 }

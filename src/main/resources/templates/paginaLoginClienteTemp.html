@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="stylePaginaUsuarioBackoffice.css">
+    <title>Nome da Loja</title>
+</head>
+<body>
+    <div>
+		<form th:action="@{loginClienteTemp}" th:object="${usuarioDto}" method="post">
+        <h1>Login</h1>
+        <input id="emailLogar" type="email"  th:field="*{email}" placeholder="Email">
+        <br></br>
+        <input id="senhaLogar" type="password" th:field="*{senha}" placeholder="Senha">
+        <br></br>
+        <a><button id="btnLogar" type="submit" name="logar" value="login">Logar</button></a></a></a>
+        <br></br> 
+		</form>
+		
+        <form th:action="@{/paginaCadastroCliente}" th:object="${usuarioDto}" method="get">
+        <a><button id="btnCadastrar" type="submit">Cadastrar</button></a></a>
+    </div>
+    <script src="scriptPaginaOrganizacao.js"></script>
+</body>
+</html>
