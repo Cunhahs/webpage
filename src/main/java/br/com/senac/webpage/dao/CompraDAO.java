@@ -1,3 +1,4 @@
+
 package br.com.senac.webpage.dao;
 
 import java.sql.DriverManager;
@@ -10,6 +11,7 @@ import java.util.List;
 
 import org.springframework.stereotype.Repository;
 
+import br.com.senac.webpage.model.Compra;
 import br.com.senac.webpage.model.Produto;
 import br.com.senac.webpage.model.ProdutoAllDto;
 
@@ -20,46 +22,48 @@ public class CompraDAO {
 	private static final String USER = "root";
 	private static final String PASSWORD = "";
 
-	public void inserir(Produto produto) throws SQLException {
+	public void inserir(Compra compra) throws SQLException {
 		var con = DriverManager.getConnection(URL, USER, PASSWORD);
 		var ps = con.prepareStatement(
-				"INSERT INTO produto (codigo, nome, descricao, quantidade, avaliacao, preco, situacao, link) VALUES ('?', '?', '?', '?', '?', '?', '?','?')");
-		ps.setString(1, produto.getCodigo());
-		ps.setString(2, produto.getNome());
-		ps.setString(3, produto.getDescricao());
-		ps.setString(4, produto.getQuantidade());
-		ps.setString(5, produto.getAvaliacao());
-		ps.setString(6, produto.getPreco());
-		ps.setString(7, produto.getSituacao());
-		ps.setString(8, produto.getLink());
+				"INSERT INTO compra (idUsuario, cidade, estado, logradouro, numero, complemento, cep, bairro, nome) VALUES ('?', '?', '?', '?', '?', '?', '?','?', '?')");
+		
+		ps.setString(1, compra.getIdUsuario());
+		ps.setString(2, compra.getCidade());
+		ps.setString(3, compra.getEstado());
+		ps.setString(4, compra.getLogradouro());
+		ps.setString(5, compra.getNumero());
+		ps.setString(6, compra.getComplemento());
+		ps.setString(7, compra.getCep());
+		ps.setString(8, compra.getBairro());
+		ps.setString(9, compra.getNome());
 		ps.execute();
 
 		con.close();
 	}
 
 //		
-	public List<ProdutoAllDto> findAll() throws SQLException {
+	public List<Compra> findAll() throws SQLException {
 		var con = DriverManager.getConnection(URL, USER, PASSWORD);
 
-		String sql = "select * from produto;";
+		String sql = "select * from compra;";
 		Statement stm = con.createStatement();
 		ResultSet ps = stm.executeQuery(sql);
-		List<ProdutoAllDto> listAll = new ArrayList<ProdutoAllDto>();
+		List<Compra> listAll = new ArrayList<Compra>();
 
 		while (ps.next()) {
-			ProdutoAllDto n = new ProdutoAllDto();
+			Compra compra = new Compra();
+			
+			compra.setBairro(ps.getString("bairro"));
+			compra.setCep(ps.getString("cep"));
+			compra.setCidade(ps.getString("cidade"));
+			compra.setComplemento(ps.getString("complemento"));
+			compra.setEstado(ps.getString("estado"));
+			compra.setIdUsuario(ps.getString("idUsuario"));
+			compra.setLogradouro(ps.getString("logradouro"));
+			compra.setNome(ps.getString("nome"));
+			compra.setNumero(ps.getString("numero"));
 
-			n.setCodigo(ps.getString("codigo"));
-			n.setNome(ps.getString("nome"));
-			n.setDescricao(ps.getString("descricao"));
-			n.setQuantidade(Integer.parseInt(ps.getString("quantidade")));
-			n.setAvaliacao(ps.getString("avaliacao"));
-			n.setPreco(Double.parseDouble(ps.getString("preco").replace("$", "").replace("R", "").replace(",", ".")));
-			n.setSituacao(ps.getString("situacao"));
-			n.setLinkImg("images/" + ps.getString("link"));
-			System.out.println(n.getLinkImg());
-
-			listAll.add(n);
+			listAll.add(compra);
 			System.out.println("Funcionou");
 		}
 
@@ -68,36 +72,40 @@ public class CompraDAO {
 		return listAll;
 	}
 
-	public ProdutoAllDto getProdutoCarrinho(String produtoDesejado) throws SQLException {
+
+public List<Compra> getProdutoCarrinho(String idUsuario) throws SQLException {
 		var con = DriverManager.getConnection(URL, USER, PASSWORD);
-		List<ProdutoAllDto> listAll = new ArrayList<ProdutoAllDto>();
+		List<Compra> listAll = new ArrayList<Compra>();
 			
 			PreparedStatement preparedStatement;
 			ResultSet resultSet;
-			String query = "select * from produto where nome = ?";
+			String query = "select * from compra where id = ?";
 
 			preparedStatement = con.prepareStatement(query);
-			preparedStatement.setString(1, produtoDesejado);
+			preparedStatement.setString(1, idUsuario);
 		
 			ResultSet ps = preparedStatement.executeQuery();
-
-			ProdutoAllDto produto = new ProdutoAllDto();			
-			while (ps.next()) {
-				produto.setNome(ps.getString("nome"));
-				produto.setAvaliacao(ps.getString("avaliacao"));
-				produto.setCodigo(ps.getString("codigo"));
-				produto.setDescricao(ps.getString("descricao"));
-				produto.setLinkImg("images/" + ps.getString("link"));
-				produto.setPreco(Double.parseDouble(ps.getString("preco").replace("$", "").replace("R", "").replace(",", ".")));
-				produto.setQuantidade(Integer.parseInt(ps.getString("quantidade")));
-				produto.setSituacao(ps.getString("situacao"));
-				
-				produto.setValorTotal(produto.getPreco());
-
-				System.out.println("ADICIONOU 1" + produto.getNome());
-
-		}
 			
-		return produto;
+			while (ps.next()) {
+
+				Compra compra = new Compra();
+				compra.setBairro(ps.getString("bairro"));
+				compra.setCep(ps.getString("cep"));
+				compra.setCidade(ps.getString("cidade"));
+				compra.setComplemento(ps.getString("complemento"));
+				compra.setEstado(ps.getString("estado"));
+				compra.setIdUsuario(ps.getString("idUsuario"));
+				compra.setLogradouro(ps.getString("logradouro"));
+				compra.setNome(ps.getString("nome"));
+				compra.setNumero(ps.getString("numero"));
+				listAll.add(compra);
+				
+				//produto.setValorTotal(produto.getPreco());
+
+				//System.out.println("ADICIONOU 1" + produto.getNome());
+
+		}		
+		return listAll;
 	}
+
 }
