@@ -66,7 +66,7 @@
                             <span class="price" th:text="${produto.preco}"></span>
                         </div>
                         <div class="options">
-                            <a href="carrinhoCliente.html"><img src="images/icon-cart.svg"> Adicionar ao carrinho</a> <!-- Fazer função para adicionar no carrinho -->
+                            <a th:href="@{/paginaProduto/addCarrinho/{nome}(nome=${produto.nome})}"><img src="images/icon-cart.svg"> Adicionar ao carrinho</a> <!-- Fazer função para adicionar no carrinho -->
                         </div>
                     </div>
                 </div>

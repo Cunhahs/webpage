@@ -28,6 +28,8 @@ import br.com.senac.webpage.util.ProdutoUnico;
 @RequestMapping("/paginaProduto")
 public class PaginaProdutoController {
 
+     int i;
+
     @GetMapping
     public ModelAndView init(Model model) throws SQLException{
     	
@@ -56,6 +58,30 @@ public class PaginaProdutoController {
         	return modelAndView;	
 		
     }     
+
+    @GetMapping("/addCarrinho/{nome}") // adicionar o carrinho deve chamar esse método
+    public ModelAndView resultCarrinho(@PathVariable("nome") String path)  throws NoSuchAlgorithmException, UnsupportedEncodingException {
+    	System.out.println();
+    	
+    	System.out.println("Post landing page");
+    	System.out.println(path);
+    	
+    	for (String s : ListCarrinho.carrinho) {
+			if (s.equals(path)) {
+				i=1;
+			}
+		}
+    	if (i==0) {
+    		ListCarrinho.carrinho.add(path);	
+    		System.out.println(ListCarrinho.carrinho.get(0));
+		}
+    	
+    	i=0;
+    
+        	ModelAndView modelAndView = new ModelAndView("redirect:/carrinhoCliente");
+        	return modelAndView;	
+		
+    }
     
 }
 
