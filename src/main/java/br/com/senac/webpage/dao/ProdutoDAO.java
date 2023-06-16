@@ -87,7 +87,7 @@ public class ProdutoDAO {
 				produto.setAvaliacao(ps.getString("avaliacao"));
 				produto.setCodigo(ps.getString("codigo"));
 				produto.setDescricao(ps.getString("descricao"));
-				produto.setLinkImg(ps.getString("link"));
+				produto.setLinkImg("images/" + ps.getString("link"));
 				produto.setPreco(Double.parseDouble(ps.getString("preco").replace("$", "").replace("R", "").replace(",", ".")));
 				produto.setQuantidade(Integer.parseInt(ps.getString("quantidade")));
 				produto.setSituacao(ps.getString("situacao"));

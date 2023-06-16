@@ -58,14 +58,12 @@
 			<div class="escolher-endereco">
 				<br>
 				<h3>Escolha o frete para o endereço <!-- Aqui é aonde vai o nome do endereço padrão do usuário -->:</h3>
-				<input type="radio" id="frete1" name="frete" value="frete1" required>
-				<label for="frete1">R$ 5,00</label>
+	
+				<a for="frete1" th:href="@{/carrinhoCliente/cinco}"required>R$ 5,00</a>
 				<br>
-				<input type="radio" id="frete2" name="frete" value="frete2" required>
-				<label for="frete2">R$ 10,00</label>
+				<a for="frete2" th:href="@{/carrinhoCliente/dez}" required >R$ 10,00</a>
 				<br>
-				<input type="radio" id="frete3" name="frete" value="frete3" required>
-				<label for="frete3">R$ 15,00</label>
+				<a for="frete3" th:href="@{/carrinhoCliente/quinze}"  required>R$ 15,00</a>
 			</div>
 			<a><button type="submit" class="purchase-button">Finalizar Compra</button></a>
 			</form>

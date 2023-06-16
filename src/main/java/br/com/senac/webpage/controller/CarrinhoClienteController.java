@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import br.com.senac.webpage.dao.ProdutoDAO;
@@ -30,6 +31,7 @@ import jakarta.persistence.PostUpdate;
 public class CarrinhoClienteController {
 	 ArrayList<ProdutoAllDto> produtos = new ArrayList<>();	
 	 double soma = 0;
+	 double frete = 0;
 		
     @GetMapping    
     public ModelAndView init(final Model model) throws SQLException { 
@@ -65,9 +67,10 @@ public class CarrinhoClienteController {
     	for (ProdutoAllDto produtoAllDto : produtos) {
     		System.out.println("--------------------" + produtoAllDto.getNome());
 			somatemp = produtoAllDto.getPreco() * produtoAllDto.getQuantidade();
-			soma = soma + somatemp;
+			soma += somatemp;
 		}
     	
+    	soma+=frete;
     	
         mv.addObject("soma",soma);
         mv.addObject("produtos", produtos);
@@ -140,5 +143,23 @@ public class CarrinhoClienteController {
         mv.addObject("produtos", produtos);
         return mv;
 	}
-	
+
+	@GetMapping("/cinco")
+	public ModelAndView freteBasico(String cinco) throws SQLException {
+		ModelAndView mv = new ModelAndView("redirect:/carrinhoCliente"); 
+		frete=5;
+        return mv;
+	}
+	@GetMapping("/dez")
+	public ModelAndView freteRapido(String dez) throws SQLException {
+		ModelAndView mv = new ModelAndView("redirect:/carrinhoCliente"); 
+		frete=10;
+        return mv;
+	}	@GetMapping("/quinze")
+	public ModelAndView FretePrincipal(String quinze) throws SQLException {
+		ModelAndView mv = new ModelAndView("redirect:/carrinhoCliente"); 
+		frete=15;
+        return mv;
+	}
+
 }
