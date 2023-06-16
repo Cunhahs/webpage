@@ -14,25 +14,16 @@ import br.com.senac.webpage.model.Produto;
 import br.com.senac.webpage.model.ProdutoAllDto;
 
 @Repository
-public class ProdutoDAO {
+public class CompraDAO {
 
 	private static final String URL = "jdbc:mysql://localhost:3306/marketplace";
 	private static final String USER = "root";
 	private static final String PASSWORD = "";
 
-	public void inserir(ProdutoAllDto produto) throws SQLException {
+	public void inserir(Produto produto) throws SQLException {
 		var con = DriverManager.getConnection(URL, USER, PASSWORD);
-		System.out.println(produto.getCodigo());
-		System.out.println(produto.getNome());
-		System.out.println(produto.getDescricao());
-		System.out.println(produto.getQuantidade());
-		System.out.println(produto.getAvaliacao());
-		System.out.println(produto.getPreco());
-		System.out.println(produto.getSituacao());
-		
 		var ps = con.prepareStatement(
-				"INSERT INTO produto (codigo, nome, descricao, quantidade, avaliacao, preco, situacao, link) "
-				+ "VALUES ('?', '?', '?', '?', '?', '?', '?','?')");
+				"INSERT INTO produto (codigo, nome, descricao, quantidade, avaliacao, preco, situacao, link) VALUES ('?', '?', '?', '?', '?', '?', '?','?')");
 		ps.setString(1, produto.getCodigo());
 		ps.setString(2, produto.getNome());
 		ps.setString(3, produto.getDescricao());

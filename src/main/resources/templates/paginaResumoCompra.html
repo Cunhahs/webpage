@@ -18,7 +18,6 @@
   <main class="main-section">
     <section class="container normal-section">
       <h2 class="section-title">Resumo do Pedido</h2>
-
       <table class="cart-table">
         <thead>
           <tr>
@@ -28,21 +27,23 @@
           </tr>
         </thead>
 
-        <tbody> <!-- Deixei esse tbody para ter como base, se precisar tirar, pode tirar -->
-          <tr class="cart-product">
-            <td class="product-identification">
-              <img src="" alt=""
-                class="cart-product-image"> <!-- Aqui nesse src é aonde iria a imagem principal do produto -->
-              <strong class="cart-product-title"> <!-- Aqui é aonde iria o nome do tênis --> </strong>
-            </td>
-            <td>
-              <span class="cart-product-price"> <!-- Aqui é aonde iria o preço do tênis --> </span>
-            </td>
-            <td>
-              <h3> <!-- Aqui é aonde iria a quantidade do tênis que foi comprado --> </h3>
-            </td>
-          </tr>
-        </tbody>
+       <tbody>
+					<tr th:each="produto:${produtos}" class="cart-product">
+						<td class="product-identification">
+							<img th:src="${produto.linkImg}" src="" alt="" class="cart-product-image">
+							<strong th:text="${produto.nome}" class="cart-product-title"></strong>
+						</td>
+						<td>
+							<span th:text="${produto.preco}" class="cart-product-price"></span>
+						</td>
+						<td>
+							<span th:text="${produto.quantidade}" id="quantidade" name="quantidade" class="cart-product-price"></span>
+						</td>						
+						</td>
+
+
+					</tr>
+				</tbody>
 
         <tfoot>
           <tr>

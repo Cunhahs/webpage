@@ -28,5 +28,11 @@ public class paginaCheckoutController {
     	System.out.println("pagina checkout");
     	return "PaginaCheckout";
     }
-    
+  
+    @PostMapping
+    public String finalizacao(final Model model) {
+    	
+    	System.out.println("pagina checkout");
+    	return "PaginaCheckout";
+    }
 }
