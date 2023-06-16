@@ -34,8 +34,13 @@
 				
               <span th:text="${produto.preco}" class="cart-product-price" ></span>
             </td>
-            <td>
-              <input type="number" name="number" id="number" value="1" min="1" class="product-qtd-input">
+            <td th:value="${produto.quantidade}" id="quantidade" name="quantidade">
+              <a th:href="@{/alterarQuantidade/{nome}/{acao}(nome=${produto.nome}, acao=${1})}" role="button"> + </a>
+              <span th:text="${produto.quantidade}" id="valor" name="id"></span>
+
+              <a th:href="@{/alterarQuantidade/{nome}/{acao}(nome=${produto.nome}, acao=${0})}" role="button"> - </a>
+              <!--<input type="number" name="number" id="number" value="1" min="1" class="product-qtd-input">-->
+              
               <button id="button-remover" type="button" class="remove-product-button">Remover</button>
             </td>
           </tr>

@@ -10,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -50,6 +51,29 @@ public class CarrinhoClienteController {
          return mv;
     	
     }  
+
+	@GetMapping("alterarQuantidade/{nome}/{acao}")
+	public String alterarQuantidade(@PathVariable String nome, @PathVariable Integer acao) {
+		for(Produto p : carrinho) {
+			if(p.getProduto().getNome().equals(nome)) {
+				if(acao == 1) {
+					p.setQuantidade(p.getQuantidade() + 1);
+					p.setValorTotal(0.); //nao tem valor total
+					p.setValorTotal(p.getValorTotal() + (p.getQuantidade() * p.getPreco()));
+				} else if (acao == 0) {
+					if(p.getQuantidade() == null) {
+						break;
+					}
+					p.setQuantidade(p.getQuantidade() - 1);
+					p.setValorTotal(0.);
+					p.setValorTotal(p.getValorTotal() + (p.getQuantidade() * p.getPreco()));
+				}
+				break;
+			}
+		}
+
+		return "redirect:/carrinhoCliente";
+	}
     
 //    @PostMapping
 //    public ModelAndView result(@ModelAttribute ProdutoAllDto produtoAllDto) throws NoSuchAlgorithmException, UnsupportedEncodingException {
