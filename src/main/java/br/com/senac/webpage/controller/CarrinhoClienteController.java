@@ -29,6 +29,7 @@ import jakarta.persistence.PostUpdate;
 public class CarrinhoClienteController {
 	int i;
 	
+	
     @GetMapping    
     public ModelAndView init(final Model model) throws SQLException {  
     	 ModelAndView mv = new ModelAndView("carrinhoClienteLogado");
@@ -39,29 +40,41 @@ public class CarrinhoClienteController {
     	if (ListCarrinho.carrinho != null) {
     		 produtos = produtoDAO.getProdutoCarrinho(ListCarrinho.carrinho);		
 		}
-          
+
+    	double soma = 0;
     	for (ProdutoAllDto produtoAllDto : produtos) {
-			
+			produtoAllDto.setQuantidade(1);
+			System.out.println(produtoAllDto.getValorTotal());
+			soma = soma + (produtoAllDto.getPreco() * produtoAllDto.getQuantidade());
 		}
-    	System.out.println(produtos.get(0).getPreco());
+    	
+    	
+
+        mv.addObject("soma",soma);
           mv.addObject("produtos", produtos);
-//          valor fim = 
-//          mv.addObject();
 
          return mv;
     	
     }  
 
 	@GetMapping("alterarQuantidade/{nome}/{acao}")
-	public String alterarQuantidade(@PathVariable String nome, @PathVariable Integer acao) {
-		for(Produto p : carrinho) {
-			if(p.getProduto().getNome().equals(nome)) {
+	public String alterarQuantidade(@PathVariable String nome, @PathVariable Integer acao) throws SQLException {
+		ProdutoDAO produtoDAO = new ProdutoDAO();
+    	
+		 java.util.List<ProdutoAllDto> produtos = null;
+		 if (ListCarrinho.carrinho != null) {
+    		 produtos = produtoDAO.getProdutoCarrinho(ListCarrinho.carrinho);		
+		}
+		 
+		
+		for(ProdutoAllDto p : produtos) {
+			if(p.getNome().equals(nome)) {
 				if(acao == 1) {
 					p.setQuantidade(p.getQuantidade() + 1);
 					p.setValorTotal(0.); //nao tem valor total
 					p.setValorTotal(p.getValorTotal() + (p.getQuantidade() * p.getPreco()));
 				} else if (acao == 0) {
-					if(p.getQuantidade() == null) {
+					if(p.getQuantidade() <= 0) {
 						break;
 					}
 					p.setQuantidade(p.getQuantidade() - 1);

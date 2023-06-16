@@ -2,76 +2,76 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Carrinho</title>
-  <link rel="stylesheet" href="styleCarrinhoClienteNaoLogado.css">
-  <script async src="loja.js"></script>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Carrinho</title>
+	<link rel="stylesheet" href="styleCarrinhoClienteNaoLogado.css">
+	<script async src="loja.js"></script>
 </head>
 
 <body>
-  <main class="main-section">
-    <section class="container normal-section">
-      <h2 class="section-title">Carrinho</h2>
+	<main class="main-section">
+		<section class="container normal-section">
+			<h2 class="section-title">Carrinho</h2>
 
-      <table class="cart-table">
-        <thead>
-          <tr>
-            <th class="table-head-item first-col">Item</th>
-            <th class="table-head-item second-col">Preço</th>
-            <th class="table-head-item third-col">Quantidade</th>
-          </tr>
-        </thead>
+			<table class="cart-table">
+				<thead>
+					<tr>
+						<th class="table-head-item first-col">Item</th>
+						<th class="table-head-item second-col">Preço</th>
+						<th class="table-head-item third-col">Quantidade</th>
+					</tr>
+				</thead>
 
-        <tbody>
-          <tr th:each="produto:${produtos}" class="cart-product">
-            <td class="product-identification">
-              <img th:src="${produto.linkImg}" src="" alt="" class="cart-product-image">
-              <strong th:text="${produto.nome}" class="cart-product-title"></strong>
-            </td>
-            <td>
-				
-              <span th:text="${produto.preco}" class="cart-product-price" ></span>
-            </td>
-            <td th:value="${produto.quantidade}" id="quantidade" name="quantidade">
-              <a th:href="@{/alterarQuantidade/{nome}/{acao}(nome=${produto.nome}, acao=${1})}" role="button"> + </a>
-              <span th:text="${produto.quantidade}" id="valor" name="id"></span>
+				<tbody>
+					<tr th:each="produto:${produtos}" class="cart-product">
+						<td class="product-identification">
+							<img th:src="${produto.linkImg}" src="" alt="" class="cart-product-image">
+							<strong th:text="${produto.nome}" class="cart-product-title"></strong>
+						</td>
+						<td>
 
-              <a th:href="@{/alterarQuantidade/{nome}/{acao}(nome=${produto.nome}, acao=${0})}" role="button"> - </a>
-              <!--<input type="number" name="number" id="number" value="1" min="1" class="product-qtd-input">-->
-              
-              <button id="button-remover" type="button" class="remove-product-button">Remover</button>
-            </td>
-          </tr>
-        </tbody>
+							<span th:text="${produto.preco}" class="cart-product-price"></span>
+						</td>
+						<td th:value="${produto.quantidade}" id="quantidade" name="quantidade">
+							<a th:href="@{/alterarQuantidade/{nome}/{acao}(nome=${produto.nome}, acao=${1})}"
+								role="button"> + </a>
+							<span th:text="${produto.quantidade}" id="valor" name="id"></span>
+
+							<a th:href="@{/alterarQuantidade/{nome}/{acao}(nome=${produto.nome}, acao=${0})}"
+								role="button"> - </a>
+							<!--<input type="number" name="number" id="number" value="1" min="1" class="product-qtd-input">-->
+
+							<button id="button-remover" type="button" class="remove-product-button">Remover</button>
+						</td>
 
 
-        <tfoot>
-          <tr>
-            <td colspan="3" class="cart-total-container">
-              <strong>Total</strong>
-              <td th:text="${#numbers.formatCurrency(#aggregates.sum(produtos.![preco]).multiply(2))}">R$ 180,00</td>
-            </td>
-          </tr>
-        </tfoot>
-      </table>
-      <div class="escolher-endereco">
-        <br>
-        <h3>Escolha o frete para o endereço <!-- Aqui é aonde vai o nome do endereço padrão do usuário -->:</h3>
-        <input type="radio" id="frete1" name="frete" value="frete1" required>
-        <label for="frete1">R$ 5,00</label>
-        <br>
-        <input type="radio" id="frete2" name="frete" value="frete2" required>
-        <label for="frete2">R$ 10,00</label>
-        <br>
-        <input type="radio" id="frete3" name="frete" value="frete3" required>
-        <label for="frete3">R$ 15,00</label>
-      </div>
-      <a><button type="submit" class="purchase-button">Finalizar Compra</button></a>
-      </form>
-    </section>
-  </main>
+					</tr>
+				</tbody>
+				<span colspan="3" class="cart-total-container">
+					<strong>Total</strong>
+					<span th:text="${soma}">R$ 180,00</span>
+					</td>
+
+
+			</table>
+			<div class="escolher-endereco">
+				<br>
+				<h3>Escolha o frete para o endereço <!-- Aqui é aonde vai o nome do endereço padrão do usuário -->:</h3>
+				<input type="radio" id="frete1" name="frete" value="frete1" required>
+				<label for="frete1">R$ 5,00</label>
+				<br>
+				<input type="radio" id="frete2" name="frete" value="frete2" required>
+				<label for="frete2">R$ 10,00</label>
+				<br>
+				<input type="radio" id="frete3" name="frete" value="frete3" required>
+				<label for="frete3">R$ 15,00</label>
+			</div>
+			<a><button type="submit" class="purchase-button">Finalizar Compra</button></a>
+			</form>
+		</section>
+	</main>
 </body>
 
 </html>

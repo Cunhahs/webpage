@@ -52,7 +52,7 @@ public class ProdutoDAO {
 			n.setCodigo(ps.getString("codigo"));
 			n.setNome(ps.getString("nome"));
 			n.setDescricao(ps.getString("descricao"));
-			n.setQuantidade(ps.getString("quantidade"));
+			n.setQuantidade(Integer.parseInt(ps.getString("quantidade")));
 			n.setAvaliacao(ps.getString("avaliacao"));
 			n.setPreco(Double.parseDouble(ps.getString("preco").replace("$", "").replace("R", "").replace(",", ".")));
 			n.setSituacao(ps.getString("situacao"));
@@ -94,8 +94,10 @@ public class ProdutoDAO {
 				produto.setDescricao(ps.getString("descricao"));
 				produto.setLinkImg(ps.getString("link"));
 				produto.setPreco(Double.parseDouble(ps.getString("preco").replace("$", "").replace("R", "").replace(",", ".")));
-				produto.setQuantidade(ps.getString("quantidade"));
+				produto.setQuantidade(Integer.parseInt(ps.getString("quantidade")));
 				produto.setSituacao(ps.getString("situacao"));
+				
+				produto.setValorTotal(produto.getPreco());
 
 				listAll.add(produto);
 				System.out.println("ADICIONOU 1" + produto.getNome());

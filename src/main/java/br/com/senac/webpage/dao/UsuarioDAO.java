@@ -21,7 +21,7 @@ public class UsuarioDAO {
 	private static final String USER = "root";
 	private static final String PASSWORD = "";
 
-	public List<UsuarioAllDto> inserir(Usuario usuario) throws SQLException {
+	public void inserir(Usuario usuario) throws SQLException {
 		var con = DriverManager.getConnection(URL, USER, PASSWORD);
 
 		var ps = con.prepareStatement("INSERT INTO usuario (id, nome, email, senha, cpf, sexo, nascimento, cidade, estado, logradouro, numero, complemento, cep, bairro, grupo, status) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
@@ -45,7 +45,6 @@ public class UsuarioDAO {
 		ps.execute();
 
 		con.close();
-		return null;
 	}
 
 	public boolean validarCliente(String email, String senha, String grupo) throws SQLException {
