@@ -33,7 +33,7 @@ public class PaginaProdutoController {
     public void result(@ModelAttribute Produto produto) throws NoSuchAlgorithmException, UnsupportedEncodingException, SQLException {
     	System.out.println("salvar do produto");
     	ProdutoDAO produtoDAO = new ProdutoDAO();
-    	produtoDAO.inserir(produto);
+    	//produtoDAO.inserir(produto);
     	
     	
     }

@@ -36,11 +36,11 @@ public class ProdutoDAO {
 		ps.setString(1, produto.getCodigo());
 		ps.setString(2, produto.getNome());
 		ps.setString(3, produto.getDescricao());
-		ps.setString(4, produto.getQuantidade());
+		//ps.setString(4, produto.getQuantidade());
 		ps.setString(5, produto.getAvaliacao());
-		ps.setString(6, produto.getPreco());
+		//ps.setString(6, produto.getPreco());
 		ps.setString(7, produto.getSituacao());
-		ps.setString(8, produto.getLink());
+		//ps.setString(8, produto.getLink());
 		ps.execute();
 
 		con.close();

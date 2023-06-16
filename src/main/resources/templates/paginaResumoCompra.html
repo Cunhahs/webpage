@@ -9,7 +9,9 @@
   <link rel="stylesheet" href="stylePaginaResumoCompra.css">
   <script>
     function funcao() {
-      alert("Sucesso na Compra! \n" + "Número do Pedido: 123 \n" + "Valor do Pedido: R$3899,96")
+      var somaElement = document.getElementById("soma");
+      var soma = somaElement.textContent;
+      alert("Sucesso na Compra!" + "\nTotal: " + soma);
     }
   </script>
 </head>
@@ -49,7 +51,7 @@
           <tr>
             <td colspan="3" class="cart-total-container">
               <strong class="total-compra">Total:</strong>
-              <span> <!-- Aqui é aonde iria o total da compra --> </span>
+              <span id="soma" th:text="${soma}"></span>
             </td>
           </tr>
         </tfoot>
